@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TuanAnh
+namespace BaiTap
 {
-    class Tygia
+    public class Tygia
     {
         static void Main()
         {

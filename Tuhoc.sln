@@ -11,6 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bt2", "CG3\Bt2.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bt1", "Bt1\Bt1.csproj", "{8E5448B1-4391-4DC3-B027-FB27016551DA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaiTap", "BaiTap", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Bt1\LoiChao.cs = Bt1\LoiChao.cs
+		CG3\Tygia.cs = CG3\Tygia.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TuHoc", "TuHoc", "{39DF1E50-34C7-48F8-A75D-68266E8A66D0}"
+	ProjectSection(SolutionItems) = preProject
+		CG2\Program2.cs = CG2\Program2.cs
+		CG1\Sosanh.cs = CG1\Sosanh.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
