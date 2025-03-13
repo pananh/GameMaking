@@ -9,7 +9,7 @@ namespace Test
 {
     class GiaoTrinhC
     {
-       
+
         enum MauSac
         {
             Do = 0,
@@ -28,22 +28,27 @@ namespace Test
             bool success = false;
 
             while (!success)
-             {
+            {
                 Console.WriteLine("Nhap tuoi: ");
                 string strInput = Console.ReadLine();
                 string strIn = (string)strInput;
                 success = int.TryParse(strIn, out soTuoi);
 
-                if ( !success )
+                if (!success)
                 {
                     Console.WriteLine("Nhap lai tuoi di: ");
                 }
             }
-            
+
             if ((soTuoi > 0) && (soTuoi <= 120))
             {
                 int ngay = soTuoi * 365;
                 Console.WriteLine("Ngay " + ngay);
+
+                var tuananh = "\0";
+                Console.WriteLine(tuananh);
+                Console.WriteLine(tuananh.ToString());
+                
 
             }
             else
@@ -53,7 +58,9 @@ namespace Test
         }
 
 
-       /* static void xMain()
+    }
+}
+        /* static void Main1()
         {
             int chonMau;
             Console.WriteLine("Mau Do {0}", (int)MauSac.Do);
@@ -65,7 +72,7 @@ namespace Test
             Console.WriteLine("Mau Tim {0}", (int)MauSac.Tim);
             Console.Write("Chon mau: ");
 
-            chonMau = Parse(Console.ReadLine();
+            chonMau = Parse(Console.ReadLine());
 
             while IsNumber(chonMau) == false
             {
@@ -106,6 +113,6 @@ namespace Test
 
             }
 
-        }*/
+        }
     }
-}
+} */
