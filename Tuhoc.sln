@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaiTap", "BaiTap", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		Bt1\LoiChao.cs = Bt1\LoiChao.cs
+		CodeGymBt\ReadNumber.cs = CodeGymBt\ReadNumber.cs
 		CG3\Tygia.cs = CG3\Tygia.cs
 	EndProjectSection
 EndProject
@@ -24,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TuHoc", "TuHoc", "{39DF1E50
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGymBt", "CodeGymBt\CodeGymBt.csproj", "{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +54,10 @@ Global
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

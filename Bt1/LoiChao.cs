@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TuanAnhBaiTap
 {
-    class LoiChao
+    public class LoiChao
     {
         static void Main()
         {

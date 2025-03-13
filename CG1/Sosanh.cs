@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace TuanAnh
 {
-    class Sosanh
+    public class Sosanh
     {
         static void Main(string[] args)
         {
