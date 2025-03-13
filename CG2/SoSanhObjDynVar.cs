@@ -15,7 +15,7 @@ namespace TuanAnh
     /// <summary>
     /// Ghi chú trước class thôi
     /// </summary>
-    class Program2
+    public class SoSanhObjDynVar
     {
         static void Main(string[] args)
         {
