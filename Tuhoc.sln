@@ -3,27 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG1", "CG1\CG1.csproj", "{48281D47-73A1-4B46-ADE3-E056AAF26116}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG2", "CG2\CG2.csproj", "{0F8C74EA-86DA-4F2D-8DED-2645FDE0B492}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bt2", "CG3\Bt2.csproj", "{5602D87D-170D-432D-9379-CAB3D0B7C77B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bt1", "Bt1\Bt1.csproj", "{8E5448B1-4391-4DC3-B027-FB27016551DA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaiTap", "BaiTap", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		Bt1\LoiChao.cs = Bt1\LoiChao.cs
-		CodeGymBt\ReadNumber.cs = CodeGymBt\ReadNumber.cs
-		CG3\Tygia.cs = CG3\Tygia.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TuHoc", "TuHoc", "{39DF1E50-34C7-48F8-A75D-68266E8A66D0}"
-	ProjectSection(SolutionItems) = preProject
-		CG2\Program2.cs = CG2\Program2.cs
-		CG1\Sosanh.cs = CG1\Sosanh.cs
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGymBt", "CodeGymBt\CodeGymBt.csproj", "{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}"
@@ -34,22 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{48281D47-73A1-4B46-ADE3-E056AAF26116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48281D47-73A1-4B46-ADE3-E056AAF26116}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48281D47-73A1-4B46-ADE3-E056AAF26116}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48281D47-73A1-4B46-ADE3-E056AAF26116}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F8C74EA-86DA-4F2D-8DED-2645FDE0B492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F8C74EA-86DA-4F2D-8DED-2645FDE0B492}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F8C74EA-86DA-4F2D-8DED-2645FDE0B492}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F8C74EA-86DA-4F2D-8DED-2645FDE0B492}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5602D87D-170D-432D-9379-CAB3D0B7C77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5602D87D-170D-432D-9379-CAB3D0B7C77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5602D87D-170D-432D-9379-CAB3D0B7C77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5602D87D-170D-432D-9379-CAB3D0B7C77B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E5448B1-4391-4DC3-B027-FB27016551DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E5448B1-4391-4DC3-B027-FB27016551DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E5448B1-4391-4DC3-B027-FB27016551DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E5448B1-4391-4DC3-B027-FB27016551DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39AAFBDB-44B4-45ED-A08C-9D28A2EB15A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
