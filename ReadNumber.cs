@@ -32,13 +32,14 @@ namespace CodeGymBt
                 Console.WriteLine(ReadPart(numberRead));
             }
             else if (numberRead < 100)
-                {
+            {
                 Console.WriteLine(ReadTwoDigit(numberRead));
-                }
+            }
             else
-                {
+            {
                 Console.WriteLine(ReadThreeDigit(numberRead));
-                };
+            }
+            ;
 
             Console.Write("Do you want to continue? (y/n): ");
             string answer = Console.ReadLine();
@@ -59,7 +60,8 @@ namespace CodeGymBt
             else
             {
                 result = ReadPart(quotient) + " hundred and " + ReadTwoDigit(remainder);
-            };
+            }
+            ;
 
             return result;
         }
@@ -73,15 +75,16 @@ namespace CodeGymBt
             {
                 result = ReadPart(quotient * 10);
             }
-            else 
+            else
                 if (quotient == 0)
-                {
+            {
                 result = ReadPart(remainder);
-                }    
-                else
-                 {   
-                   result = ReadPart(quotient * 10) + "-" + ReadPart(remainder);
-                 };
+            }
+            else
+            {
+                result = ReadPart(quotient * 10) + "-" + ReadPart(remainder);
+            }
+            ;
 
             return result;
         }
@@ -175,7 +178,7 @@ namespace CodeGymBt
                 case 90:
                     result = "ninety";
                     break;
-                
+
             }
             return result;
         }
@@ -183,4 +186,3 @@ namespace CodeGymBt
 
     }
 }
-

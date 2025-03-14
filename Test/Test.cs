@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    class GiaoTrinhC
+    public class GiaoTrinhC
     {
 
         enum MauSac
