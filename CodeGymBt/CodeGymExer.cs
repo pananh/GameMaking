@@ -7,42 +7,88 @@ using System.Threading.Tasks;
 
 namespace CodeGym
 {
-    public class CodeGymExer_DateShow
+    public class CodeGymExercise_InterestRate
     {
         public static void Main(string[] args)
         {
-            
-            DateTime timeShowNow = DateTime.Now;
+            double money;
+            uint month;
+            double interestRate;
 
-            Console.WriteLine("Now: {0} ", DateTime.Now);
-            Console.WriteLine("Today: {0} ", DateTime.Today);
-            Console.WriteLine("UtcNow: {0} ", DateTime.UtcNow);
-            DateTime timeShow;
-            timeShow = new DateTime(1987, 06, 19, 12, 1, 10);
-            Console.WriteLine("TimeShow My Birthday: {0} ", timeShow);
+            money = Get_Double("Enter the amount of money: ");
+            month = Get_UInt("Enter the number of months: ");
+            interestRate = Get_UDouble("Enter the interest rate per year: ");
 
-            Console.WriteLine("---------------");
+            for (int i = 0; i < month; i++)
+            {
+                // period = 1 month
+                money += money * interestRate / 100 / 12;
+            }
+            Console.WriteLine("The amount of money after " + month + " months is: " + money);
+        }
 
-            Console.WriteLine("Date: {0} - {1} ", timeShowNow.Date, timeShow.Date);
-            Console.WriteLine("Day: {0} - {1} ", timeShowNow.Day, timeShow.Day);
-            Console.WriteLine("DayOfWeek: {0} - {1} ", timeShowNow.DayOfWeek, timeShow.DayOfWeek);
-            Console.WriteLine("DayOfYear: {0} - {1} ", timeShowNow.DayOfYear, timeShow.DayOfYear);
-            Console.WriteLine("Hour: {0} - {1} ", timeShowNow.Hour, timeShow.Hour);
-            Console.WriteLine("Kind: {0} - {1} ", timeShowNow.Kind, timeShow.Kind);
-            Console.WriteLine("Millisecond: {0} - {1} ", timeShowNow.Millisecond, timeShow.Millisecond);
-            Console.WriteLine("Minute: {0} - {1} ", timeShowNow.Minute, timeShow.Minute);
-            Console.WriteLine("Month: {0} - {1} ", timeShowNow.Month, timeShow.Month);
-            Console.WriteLine("Second: {0} - {1} ", timeShowNow.Second, timeShow.Second);
-            Console.WriteLine("Ticks: {0} - {1} ", timeShowNow.Ticks, timeShow.Ticks);
-            Console.WriteLine("TimeOfDay: {0} - {1} ", timeShowNow.TimeOfDay, timeShow.TimeOfDay);
-            Console.WriteLine("Year: {0} - {1} ", timeShowNow.Year, timeShow.Year);
-            Console.WriteLine("ToLongDateString: {0} - {1} ", timeShowNow.ToLongDateString(), timeShow.ToLongDateString());
-            Console.WriteLine("ToLongTimeString: {0} - {1} ", timeShowNow.ToLongTimeString(), timeShow.ToLongTimeString());
-            Console.WriteLine("ToShortDateString: {0} - {1} ", timeShowNow.ToShortDateString(), timeShow.ToShortDateString());
-            Console.WriteLine("ToShortTimeString: {0} - {1} ", timeShowNow.ToShortTimeString(), timeShow.ToShortTimeString());
-            Console.WriteLine("ToUniversalTime: {0} - {1} ", timeShowNow.ToUniversalTime(), timeShow.ToUniversalTime());
+        static double Get_Double(string showString)
+        {
+            double number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = double.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
+        }
 
+        static double Get_UDouble(string showString)
+        {
+            double number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = double.TryParse(Console.ReadLine(), out number);
+                if (!isNumber || number < 0)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber || number < 0);
+            return number;
+        }
 
+        static int Get_Int(string showString)
+        {
+            int number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                
+                isNumber = int.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
+        }
+        static uint Get_UInt(string showString)
+        {
+            uint number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = uint.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
         }
     }
 }
