@@ -4,31 +4,20 @@ namespace PrimeNumberFinder
 {
     class Program
     {
-        
-
         static void Main(string[] args)
         {
             Console.Write("Enter a number: ");
-            DateTime dateTimeStart = DateTime.Now;
 
-            int totalPrimeNumbers = 1;
-            int primeNumberArray = new int [1000000];
-            primeNumberArray[0] = 2;
-            
+            DateTime dateTimeStart = DateTime.Now;
 
             if (int.TryParse(Console.ReadLine(), out int n))
             {
                 Console.WriteLine($"Prime numbers up to {n}:");
-
                 for (int i = 2; i <= n; i++)
-
                 {
                     if (IsPrime(i))
                     {
                         Console.Write(i + " ");
-                        totalPrimeNumbers++;
-                        primeNumberArray[totalPrimeNumbers - 1] = i;
-
                     }
                 }
                 Console.WriteLine();
@@ -44,19 +33,18 @@ namespace PrimeNumberFinder
 
         }
 
-
         static bool IsPrime(int number)
         {
             if (number <= 1) return false;
-            for (int i = 1; i <= totalPrimeNumbers; i += 2)
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+
+            for (int i = 3; i <= Math.Sqrt(number); i += 2)
             {
-                if (number % primeNumberArray[i] == 0) return false;
+                if (number % i == 0) return false;
             }
 
             return true;
         }
     }
-
-
-}
 }

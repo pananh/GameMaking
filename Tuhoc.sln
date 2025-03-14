@@ -10,9 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		DateShow.cs = DateShow.cs
-		LoiChao.cs = LoiChao.cs
 		InterestPerMonth.cs = InterestPerMonth.cs
+		LoiChao.cs = LoiChao.cs
 		ReadNumber.cs = ReadNumber.cs
+		PrimeNumber1.cs = PrimeNumber1.cs
 		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
 		TuoisangNgay.cs = TuoisangNgay.cs
