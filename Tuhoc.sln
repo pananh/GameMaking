@@ -8,8 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGymBt", "CodeGymBt\CodeGymBt.csproj", "{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LuuTru", "LuuTru", "{BFCB1DF7-A317-49CB-8C70-F796BE5DAFC7}"
 	ProjectSection(SolutionItems) = preProject
 		DateShow.cs = DateShow.cs
 		LoiChao.cs = LoiChao.cs
@@ -37,9 +35,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BFCB1DF7-A317-49CB-8C70-F796BE5DAFC7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {147E4FE6-0049-4104-AF3E-1A7D6595562E}
