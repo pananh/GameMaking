@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 	ProjectSection(SolutionItems) = preProject
 		DateShow.cs = DateShow.cs
 		LoiChao.cs = LoiChao.cs
+		InterestPerMonth.cs = InterestPerMonth.cs
 		ReadNumber.cs = ReadNumber.cs
 		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
