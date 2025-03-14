@@ -37,9 +37,9 @@ namespace PrimeNumberFinder
         {
             if (number <= 1) return false;
             if (number == 2) return true;
-            if (number % 2 == 0) return false;
+            if (number % 2 == 0) return false;   // chỉ loại các số chẵn
 
-            for (int i = 3; i <= Math.Sqrt(number); i += 2)
+            for (int i = 3; i <= (int)Math.Sqrt(number); i += 2)  
             {
                 if (number % i == 0) return false;
             }
