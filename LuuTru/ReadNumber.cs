@@ -74,11 +74,11 @@ namespace CodeGymBt
                 result = ReadPart(quotient * 10);
             }
             else 
-                //if (quotient == 0)
-                //{
-                //result = ReadPart(remainder);
-                //}    
-                //else
+                if (quotient == 0)
+                {
+                result = ReadPart(remainder);
+                }    
+                else
                  {   
                    result = ReadPart(quotient * 10) + "-" + ReadPart(remainder);
                  };
