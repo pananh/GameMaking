@@ -19,7 +19,7 @@ namespace CodeGym
 
             int lua_chon = Get_Int("Enter your lua_chon: ");
 
-            switch (lua_chon) 
+            switch (lua_chon)
             {
 
                 case 1:
@@ -32,7 +32,7 @@ namespace CodeGym
                     Console.WriteLine("3. Print triangle Bottom-Left");
                     Console.WriteLine("4. Print triangle Bottom-Right");
                     int lua_chon2 = Get_Int("Enter your choice: ");
-                    
+
                     switch (lua_chon2)
                     {
                         case 1:
@@ -78,17 +78,17 @@ namespace CodeGym
         static void Print_Square_Triangle_Top_Right()
         {
             int height = Get_Int("Enter the height: ");
-            for (int i = 0; i<height; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j<i; j++)
+                for (int j = 0; j < i; j++)
                 {
                     Console.Write(" ");
                 }
-                for (int j = 0; j<height - i; j++)
+                for (int j = 0; j < height - i; j++)
                 {
                     Console.Write("*");
                 }
-Console.WriteLine();
+                Console.WriteLine();
             }
         }
         static void Print_Square_Triangle_Bottom_Right()
@@ -126,7 +126,7 @@ Console.WriteLine();
             int height = Get_Int("Enter the height: ");
             for (int i = 0; i < height; i++)
             {
-                for (int j = 1; j <= i+1; j++)
+                for (int j = 1; j <= i + 1; j++)
                 {
                     Console.Write("*");
                 }
@@ -134,7 +134,7 @@ Console.WriteLine();
             }
         }
 
-       static void Print_Isosceles_Triangle()
+        static void Print_Isosceles_Triangle()
         {
             int height = Get_Int("Enter the height: ");
             for (int i = 0; i < height; i++)
@@ -150,6 +150,7 @@ Console.WriteLine();
                 Console.WriteLine();
             }
         }
+
 
         static double Get_Double(string showString)
         {

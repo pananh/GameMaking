@@ -1,0 +1,26 @@
+TopLeft	
+***	1 -> h
+**	1 -> h-1
+*	1
+
+Bottom Left
+*
+**
+***	1 -> chieu cao
+
+
+BottomRight
+  *	khoảng trắng 1 -> chiều cao - dòng; *: in từ 1 đến dòng
+ **
+***
+
+TopRight
+***	khoảng trắng -> in từ 1 đến dòng - 1; * từ 1 đến - dòng + 1
+ **	
+  *
+
+h = 4;
+   *		3 trắng, 1 *
+  ***		2 trắng, 3 *
+ *****		1 trắng, 5 *
+*******		0 trắng, 7 *
