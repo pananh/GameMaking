@@ -18,19 +18,19 @@ namespace PrimeNumberFinder_ArraySolution
 
             int totalPrimeNumbers = 1;
             int[] primeNumberArray = new int[2000000];
-            primeNumberArray[0] = 2;           
+            primeNumberArray[0] = 2;
             // Mang dau tien co 1 so nguyen to la 2
 
             if (int.TryParse(Console.ReadLine(), out int n))
             {
-                if (n<=1)
+                if (n <= 1)
                 {
                     Console.WriteLine("No prime numbers found");
                     goto EndLabel;
                 }
                 Console.WriteLine($"Prime numbers up to {n}:");
                 Console.Write("2 ");
-                if (n == 2) 
+                if (n == 2)
                 {
                     goto EndFind;
                 }
@@ -45,7 +45,7 @@ namespace PrimeNumberFinder_ArraySolution
                         {
                             break;
                         }
-                        if (i % primeNumberArray[j-1] == 0)
+                        if (i % primeNumberArray[j - 1] == 0)
                         {
                             isPrime = false;
                             break;
@@ -75,7 +75,7 @@ namespace PrimeNumberFinder_ArraySolution
             Console.WriteLine($"Time taken: {timeSpan.TotalMilliseconds} ms");
 
         }
-                
+
     }
 
 

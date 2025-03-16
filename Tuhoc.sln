@@ -13,13 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		InterestPerMonth.cs = InterestPerMonth.cs
 		LoiChao.cs = LoiChao.cs
 		PrimeNumber1.cs = PrimeNumber1.cs
-		ReadNumber.cs = ReadNumber.cs
 		PrintRecTriangleStar.cs = PrintRecTriangleStar.cs
+		PrimeNumber2.cs = PrimeNumber2.cs
+		ReadNumber.cs = ReadNumber.cs
 		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
 		TuoisangNgay.cs = TuoisangNgay.cs
 		TyGia.cs = TyGia.cs
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compare", "Compare\Compare.csproj", "{53BDA6F4-1A90-4250-95B1-7F04ED265986}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +38,10 @@ Global
 		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84164670-C1A7-43A8-B47C-D9BDA4DCFECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
