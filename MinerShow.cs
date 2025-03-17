@@ -16,8 +16,8 @@ namespace CodeGym
         {
             int row = Get_Int("Enter the number of row: ");
             int col = Get_Int("Enter the number of column: ");
-            char[,] mapInput = new char[row + 2, col +2 ];
-            
+            char[,] mapInput = new char[row + 2, col + 2];
+
             Array.Clear(mapInput, 0, mapInput.Length);
 
             Console.WriteLine("Enter the map. Note * is mine. ");
@@ -28,11 +28,11 @@ namespace CodeGym
                 string input = Console.ReadLine();
                 for (int j = 1; j <= col; j++)
                 {
-                    mapInput[i, j] = input[j-1];
+                    mapInput[i, j] = input[j - 1];
                 }
             }
 
-            int[,] mapOutput = new int[row+2, col+2];
+            int[,] mapOutput = new int[row + 2, col + 2];
             Array.Clear(mapOutput, 0, mapInput.Length);
 
             for (int i = 1; i <= row; i++)
@@ -42,12 +42,12 @@ namespace CodeGym
                     mapOutput[i, j] = ArroundMine(mapInput, i, j);
                 }
             }
-            
-            PrintArrayChar2(mapInput,1,row,1,col);
+
+            PrintArrayChar2(mapInput, 1, row, 1, col);
 
             Console.WriteLine("The map after processing: ");
 
-            PrintArrayInt2(mapOutput,1,row,1,col);
+            PrintArrayInt2(mapOutput, 1, row, 1, col);
         }
 
         static int ArroundMine(char[,] map, int row, int col)
@@ -69,7 +69,7 @@ namespace CodeGym
             {
                 totalMine++;
             }
-            if (map[row + 1, col-1] == '*')
+            if (map[row + 1, col - 1] == '*')
             {
                 totalMine++;
             }
@@ -84,7 +84,7 @@ namespace CodeGym
             return totalMine;
         }
 
-        static void PrintArrayInt2(int[,] arrayInt,int startRow, int row,int startCol, int col)
+        static void PrintArrayInt2(int[,] arrayInt, int startRow, int row, int startCol, int col)
         {
             for (int i = startRow; i <= row; i++)
             {
@@ -96,7 +96,7 @@ namespace CodeGym
             }
         }
 
-        static void PrintArrayChar2(char[,] arrayChar,int startRow, int row, int startCol, int col)
+        static void PrintArrayChar2(char[,] arrayChar, int startRow, int row, int startCol, int col)
         {
             for (int i = startRow; i <= row; i++)
             {
