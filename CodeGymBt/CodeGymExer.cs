@@ -14,42 +14,77 @@ namespace CodeGym
     {
         public static void Main(string[] args)
         {
-            int row = Get_Int("Enter the number of row: ");
-            int col = Get_Int("Enter the number of column: ");
-            char[,] mapInput = new char[row + 2, col +2 ];
-            
-            Array.Clear(mapInput, 0, mapInput.Length);
 
-            Console.WriteLine("Enter the map. Note * is mine. ");
+            int[] arr1 = new int[10000000];
+            int[] arr2 = new int[10000000];
+            int[] arr3 = new int[10000000];
+            int[][] arrayInArray = new int[][] { arr1, arr2, arr3 };
 
-            for (int i = 1; i <= row; i++)
+            int n = 5; 
+            for (int i = 0; i < n; i++)
             {
-                Console.Write("Enter the row " + i + " map: ");
-                string input = Console.ReadLine();
-                for (int j = 1; j <= col; j++)
+                arr1[i] = new Random().Next(20);
+                arr2[i] = new Random().Next(20);
+                arr3[i] = new Random().Next(20);
+            }
+            PrintArrayInt(arr1, n); 
+            Console.WriteLine();
+            PrintArrayInt(arr2, n);
+            Console.WriteLine();
+            PrintArrayInt(arr3, n);
+            Console.WriteLine();
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < n; j++)
                 {
-                    mapInput[i, j] = input[j-1];
+                    Console.Write(arrayInArray[i][j] + " ");
+                    
                 }
+                Console.WriteLine();
             }
 
-            int[,] mapOutput = new int[row+2, col+2];
-            Array.Clear(mapOutput, 0, mapInput.Length);
 
-            for (int i = 1; i <= row; i++)
-            {
-                for (int j = 1; j <= col; j++)
-                {
-                    mapOutput[i, j] = ArroundMine(mapInput, i, j);
-                }
-            }
-            
-            PrintArrayChar2(mapInput,1,row,1,col);
 
-            Console.WriteLine("The map after processing: ");
+            //int row = Get_Int("Enter the number of row: ");
+            //int col = Get_Int("Enter the number of column: ");
+            //char[,] mapInput = new char[row + 2, col + 2];
 
-            PrintArrayInt2(mapOutput,1,row,1,col);
+            //Array.Clear(mapInput, 0, mapInput.Length);
+
+            //Console.WriteLine("Enter the map. Note * is mine. ");
+
+            //for (int i = 1; i <= row; i++)
+            //{
+            //    Console.Write("Enter the row " + i + " map: ");
+            //    string input = Console.ReadLine();
+            //    for (int j = 1; j <= col; j++)
+            //    {
+            //        mapInput[i, j] = input[j - 1];
+            //    }
+            //}
+
+            //int[,] mapOutput = new int[row + 2, col + 2];
+            //Array.Clear(mapOutput, 0, mapInput.Length);
+
+            //for (int i = 1; i <= row; i++)
+            //{
+            //    for (int j = 1; j <= col; j++)
+            //    {
+            //        mapOutput[i, j] = ArroundMine(mapInput, i, j);
+            //    }
+            //}
+
+            //PrintArrayChar2(mapInput, 1, row, 1, col);
+
+            //Console.WriteLine("The map after processing: ");
+
+            //PrintArrayInt2(mapOutput, 1, row, 1, col);
+
         }
-
+        
+        
         static int ArroundMine(char[,] map, int row, int col)
         {
             int totalMine = 0;
