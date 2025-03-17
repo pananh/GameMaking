@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		PrintRecTriangleStar.cs = PrintRecTriangleStar.cs
 		ReadNumber.cs = ReadNumber.cs
 		SoSanhA++.cs = SoSanhA++.cs
+		ShowNumberOfPrime.cs = ShowNumberOfPrime.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
 		TuoisangNgay.cs = TuoisangNgay.cs
 		TyGia.cs = TyGia.cs
