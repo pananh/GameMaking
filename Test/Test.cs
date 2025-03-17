@@ -17,7 +17,11 @@ namespace PrimeNumberFinder_ArraySolution
             DateTime dateTimeStart = DateTime.Now;
 
             int totalPrimeNumbers = 1;
-            int[] primeNumberArray = new int[2000000];
+
+            int[] primeNumberArray = new int[30000000];
+
+
+
             primeNumberArray[0] = 2;           
             // Mang dau tien co 1 so nguyen to la 2
 
@@ -55,7 +59,7 @@ namespace PrimeNumberFinder_ArraySolution
                     {
                         primeNumberArray[totalPrimeNumbers] = i;
                         totalPrimeNumbers++;
-                        Console.Write(i + " ");
+                        //Console.Write(i + " ");
                     }
 
                 }
