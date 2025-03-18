@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		AddItemArray.cs = AddItemArray.cs
 		DateShow.cs = DateShow.cs
 		InterestPerMonth.cs = InterestPerMonth.cs
+		FindTotalMainDiagonal.cs = FindTotalMainDiagonal.cs
 		FindMaxNumberArray.cs = FindMaxNumberArray.cs
 		LargestCommonDivisor.cs = LargestCommonDivisor.cs
 		LoiChao.cs = LoiChao.cs

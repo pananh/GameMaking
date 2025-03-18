@@ -1,53 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 
-namespace CodeGym
+namespace ListExample
 {
     public class Test
     {
+        //List
         public static void Main(string[] args)
         {
-            int[] arrayInt = new int[10000000];
-
-            int n = Get_Int("Enter the number of elements in the array: ");
-            for (int i = 0; i < n; i++)
+            List<int> dsInt = new List<int>();
+            dsInt.AddRange(new int[] { 0, 3, 4, 5, 6, 7, 8, 9, 10, 3, 9, 6, 8 });
+            foreach (var item in dsInt)
             {
-                arrayInt[i] = Get_Int("Enter the element " + i + " : ");
+                Console.Write(item + " ");
             }
 
-            int getNumber = Get_Int("Enter the number you want to add: ");
-            int index = Get_Int("Enter the index you want to add: ");
+            var kq = dsInt.FindAll( x => x % 3 ==  0 );
+            
+            Console.WriteLine();
 
-            if (index < 0 || index > n)
+            foreach (var item in kq)
             {
-                Console.WriteLine("Invalid index. Can not add");
+                Console.Write(item + " ");
             }
-            else
-            {
-                for (int i = n; i > index; i--)
-                {
-                    arrayInt[i] = arrayInt[i - 1];
-                }
-                arrayInt[index] = getNumber;
-                n++;
-            }
-
-            PrintArrayInt(arrayInt, n);
-
+            
 
         }
 
 
-        static void PrintArrayInt(int[] arrayInt, int n)
+
+        static void PrintArrayDouble2(double[,] arrayDouble, int startRow, int endRow, int startCol, int endCol)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = startCol; j <= endCol; j++)
+                {
+                    Console.Write(arrayDouble[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void PrintArrayInt2(int[,] arrayInt, int startRow, int endRow, int startCol, int endCol)
+        {
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = startCol; j <= endCol; j++)
+                {
+                    Console.Write(arrayInt[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void PrintArrayChar2(char[,] arrayChar, int startRow, int endRow, int startCol, int endCol)
+        {
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = startCol; j <= endCol; j++)
+                {
+                    Console.Write(arrayChar[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void PrintArrayInt(int[] arrayInt, int start, int end)
+        {
+            for (int i = start; i <= end; i++)
             {
                 Console.Write(arrayInt[i] + " ");
             }

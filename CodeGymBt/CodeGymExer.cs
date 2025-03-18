@@ -10,141 +10,70 @@ using Microsoft.VisualBasic;
 
 namespace CodeGym
 {
-    public class MinerShow
+    public class FindTotalMainDiagonal
     {
         public static void Main(string[] args)
         {
+            int row = Get_Int("Enter the matrix size: ");
+            int[,] arrayInt = new int[row, row];
+            int total = 0;
 
-            int[] arr1 = new int[10000000];
-            int[] arr2 = new int[10000000];
-            int[] arr3 = new int[10000000];
-            int[][] arrayInArray = new int[][] { arr1, arr2, arr3 };
-
-            int n = 5; 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < row; i++)
             {
-                arr1[i] = new Random().Next(20);
-                arr2[i] = new Random().Next(20);
-                arr3[i] = new Random().Next(20);
-            }
-            PrintArrayInt(arr1, n); 
-            Console.WriteLine();
-            PrintArrayInt(arr2, n);
-            Console.WriteLine();
-            PrintArrayInt(arr3, n);
-            Console.WriteLine();
-
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < row; j++)
                 {
-                    Console.Write(arrayInArray[i][j] + " ");
-                    
+                    arrayInt[i, j] = new Random().Next(1, 100);
+                    if (i == j)
+                    {
+                        total += arrayInt[i, j];
+                    }
+
+                }
+            }
+            Console.WriteLine("The matrix is: ");
+            PrintArrayInt2(arrayInt, 0, row - 1, 0, row - 1);
+            int n = total;
+            Console.WriteLine("The total of the main diagonal is: {0} ", total);
+        }
+        
+        
+        
+        static void PrintArrayDouble2(double[,] arrayDouble, int startRow, int endRow, int startCol, int endCol)
+        {
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = startCol; j <= endCol; j++)
+                {
+                    Console.Write(arrayDouble[i, j] + " ");
                 }
                 Console.WriteLine();
             }
-
-
-
-            //int row = Get_Int("Enter the number of row: ");
-            //int col = Get_Int("Enter the number of column: ");
-            //char[,] mapInput = new char[row + 2, col + 2];
-
-            //Array.Clear(mapInput, 0, mapInput.Length);
-
-            //Console.WriteLine("Enter the map. Note * is mine. ");
-
-            //for (int i = 1; i <= row; i++)
-            //{
-            //    Console.Write("Enter the row " + i + " map: ");
-            //    string input = Console.ReadLine();
-            //    for (int j = 1; j <= col; j++)
-            //    {
-            //        mapInput[i, j] = input[j - 1];
-            //    }
-            //}
-
-            //int[,] mapOutput = new int[row + 2, col + 2];
-            //Array.Clear(mapOutput, 0, mapInput.Length);
-
-            //for (int i = 1; i <= row; i++)
-            //{
-            //    for (int j = 1; j <= col; j++)
-            //    {
-            //        mapOutput[i, j] = ArroundMine(mapInput, i, j);
-            //    }
-            //}
-
-            //PrintArrayChar2(mapInput, 1, row, 1, col);
-
-            //Console.WriteLine("The map after processing: ");
-
-            //PrintArrayInt2(mapOutput, 1, row, 1, col);
-
         }
-        
-        
-        static int ArroundMine(char[,] map, int row, int col)
+        static void PrintArrayInt2(int[,] arrayInt,int startRow, int endRow,int startCol, int endCol)
         {
-            int totalMine = 0;
-            if (map[row - 1, col - 1] == '*')
+            for (int i = startRow; i <= endRow; i++)
             {
-                totalMine++;
-            }
-            if (map[row - 1, col] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row, col - 1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row, col + 1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col-1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col + 1] == '*')
-            {
-                totalMine++;
-            }
-            return totalMine;
-        }
-
-        static void PrintArrayInt2(int[,] arrayInt,int startRow, int row,int startCol, int col)
-        {
-            for (int i = startRow; i <= row; i++)
-            {
-                for (int j = startCol; j <= col; j++)
+                for (int j = startCol; j <= endCol; j++)
                 {
                     Console.Write(arrayInt[i, j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-
-        static void PrintArrayChar2(char[,] arrayChar,int startRow, int row, int startCol, int col)
+        static void PrintArrayChar2(char[,] arrayChar,int startRow, int endRow, int startCol, int endCol)
         {
-            for (int i = startRow; i <= row; i++)
+            for (int i = startRow; i <= endRow; i++)
             {
-                for (int j = startCol; j <= col; j++)
+                for (int j = startCol; j <= endCol; j++)
                 {
                     Console.Write(arrayChar[i, j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-        static void PrintArrayInt(int[] arrayInt, int n)
+        static void PrintArrayInt(int[] arrayInt, int start, int end)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = start; i <= end; i++)
             {
                 Console.Write(arrayInt[i] + " ");
             }
