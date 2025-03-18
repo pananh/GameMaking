@@ -32,14 +32,20 @@ namespace CodeGym
                 }
             }
 
-            int[,] mapOutput = new int[row + 2, col + 2];
+            char[,] mapOutput = new char[row + 2, col + 2];
             Array.Clear(mapOutput, 0, mapInput.Length);
 
             for (int i = 1; i <= row; i++)
             {
                 for (int j = 1; j <= col; j++)
                 {
-                    mapOutput[i, j] = ArroundMine(mapInput, i, j);
+                    if (mapInput[i, j] == '*')
+                    {
+                        mapOutput[i, j] = '*';
+                    }
+                    else
+                        mapOutput[i, j] = ArroundMine(mapInput, i, j).ToString()[0];
+
                 }
             }
 
@@ -47,39 +53,22 @@ namespace CodeGym
 
             Console.WriteLine("The map after processing: ");
 
-            PrintArrayInt2(mapOutput, 1, row, 1, col);
+            PrintArrayChar2(mapOutput, 1, row, 1, col);
+
         }
 
         static int ArroundMine(char[,] map, int row, int col)
         {
+            int[][] aroundMap = new int[8][] { new int[] { -1, -1 }, new int[] { -1, 0 }, new int[] { -1, 1 }, new int[] { 0, -1 },
+                                               new int[] { 0, 1 }, new int[] { 1, -1 }, new int[] { 1, 0 }, new int[] { 1, 1 } };
+
             int totalMine = 0;
-            if (map[row - 1, col - 1] == '*')
+            foreach (int[] around in aroundMap)
             {
-                totalMine++;
-            }
-            if (map[row - 1, col] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row, col - 1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row, col + 1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col - 1] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col] == '*')
-            {
-                totalMine++;
-            }
-            if (map[row + 1, col + 1] == '*')
-            {
-                totalMine++;
+                if (map[row + around[0], col + around[1]] == '*')
+                {
+                    totalMine++;
+                }
             }
             return totalMine;
         }
@@ -107,13 +96,16 @@ namespace CodeGym
                 Console.WriteLine();
             }
         }
-        static void PrintArrayInt(int[] arrayInt, int n)
+
+        static void PrintArrayInt(int[] arrayInt, int start, int end)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = start; i <= end; i++)
             {
                 Console.Write(arrayInt[i] + " ");
             }
+            Console.WriteLine();
         }
+
         static double Get_Double(string showString)
         {
             double number;
@@ -129,6 +121,7 @@ namespace CodeGym
             } while (!isNumber);
             return number;
         }
+
         static double Get_UDouble(string showString)
         {
             double number;
@@ -144,6 +137,7 @@ namespace CodeGym
             } while (!isNumber || number < 0);
             return number;
         }
+
         static int Get_Int(string showString)
         {
             int number;
@@ -159,6 +153,7 @@ namespace CodeGym
             } while (!isNumber);
             return number;
         }
+
         static uint Get_UInt(string showString)
         {
             uint number;
