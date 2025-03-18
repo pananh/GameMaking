@@ -10,36 +10,29 @@ using Microsoft.VisualBasic;
 
 namespace CodeGym
 {
-    public class FindMaxInArray2
+    public class FindTotalMainDiagonal
     {
         public static void Main(string[] args)
         {
-            int row = Get_Int("Enter the number of rows: ");
-            int col = Get_Int("Enter the number of columns: ");
-
-            int[,] arrayInt = new int[row, col];
-            int? maxNumber = null;
-            int maxRow = 0;
-            int maxCol = 0;
+            int row = Get_Int("Enter the matrix size: ");
+            int[,] arrayInt = new int[row, row];
+            int total = 0;
 
             for (int i = 0; i < row; i++)
             {
-                for (int j = 0; j < col; j++)
+                for (int j = 0; j < row; j++)
                 {
                     arrayInt[i, j] = Get_Int("Enter the element at position [" + (i + 1) + "," + (j + 1) + "]: ");
-                    if (maxNumber == null || arrayInt[i, j] > maxNumber)
+                    if (i == j)
                     {
-                        maxNumber = arrayInt[i, j];
-                        maxRow = i + 1;
-                        maxCol = j + 1;
+                        total += arrayInt[i, j];
                     }
+
                 }
-
             }
-
-            PrintArrayInt2(arrayInt, 0, row - 1, 0, col - 1);
-            Console.WriteLine("The max number in the array is: " + maxNumber);
-            Console.WriteLine("The position of the max number is : Row " + maxRow + " Col " + maxCol);
+            Console.WriteLine("The matrix is: ");
+            PrintArrayInt2(arrayInt, 0, row - 1, 0, row - 1);
+            Console.WriteLine("The total of the main diagonal is: " + total);
         }
 
 
