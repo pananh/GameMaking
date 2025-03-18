@@ -1,86 +1,117 @@
 ﻿using System;
-using System.Globalization;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
-/* Thuat toan tim so nguyen to theo Mang
-Cac so nguyen to se duoc luu vao mot mang
-Neu so i ma khong chia het cho cac so nguyen to truoc do thi i la so nguyen to
-Luu y, cung chi can cac so nguyen to den can bac 2 cua i la du
-*/
-namespace PrimeNumberFinder_ArraySolution
+
+namespace CodeGym
 {
-    class Program
+    public class Test
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.Write("Enter a number: ");
-            // Tinh thoi gian chay
-            DateTime dateTimeStart = DateTime.Now;
+            int[] arrayInt = new int[10000000];
 
-            int totalPrimeNumbers = 1;
-
-            int[] primeNumberArray = new int[30000000];
-
-
-
-            primeNumberArray[0] = 2;           
-            // Mang dau tien co 1 so nguyen to la 2
-
-            if (int.TryParse(Console.ReadLine(), out int n))
+            int n = Get_Int("Enter the number of elements in the array: ");
+            for (int i = 0; i < n; i++)
             {
-                if (n<=1)
-                {
-                    Console.WriteLine("No prime numbers found");
-                    goto EndLabel;
-                }
-                Console.WriteLine($"Prime numbers up to {n}:");
-                Console.Write("2 ");
-                if (n == 2) 
-                {
-                    goto EndFind;
-                }
+                arrayInt[i] = Get_Int("Enter the element " + i + " : ");
+            }
 
-                for (int i = 3; i <= n; i++)
-                {
-                    bool isPrime = true;
-                    float sqrtI = (float)Math.Sqrt(i);
-                    for (int j = 1; j <= totalPrimeNumbers; j++)
-                    {
-                        if (primeNumberArray[j - 1] > sqrtI)
-                        {
-                            break;
-                        }
-                        if (i % primeNumberArray[j-1] == 0)
-                        {
-                            isPrime = false;
-                            break;
-                        }
-                    }
-                    if (isPrime)
-                    {
-                        primeNumberArray[totalPrimeNumbers] = i;
-                        totalPrimeNumbers++;
-                        //Console.Write(i + " ");
-                    }
+            int getNumber = Get_Int("Enter the number you want to add: ");
+            int index = Get_Int("Enter the index you want to add: ");
 
-                }
-
-            EndFind:
-                Console.WriteLine();
-                Console.WriteLine($"Total prime numbers found: {totalPrimeNumbers}");
+            if (index < 0 || index > n)
+            {
+                Console.WriteLine("Invalid index. Can not add");
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid integer.");
+                for (int i = n; i > index; i--)
+                {
+                    arrayInt[i] = arrayInt[i - 1];
+                }
+                arrayInt[index] = getNumber;
+                n++;
             }
 
-        EndLabel:
-            DateTime dateTimeEnd = DateTime.Now;
-            TimeSpan timeSpan = dateTimeEnd - dateTimeStart;
-            Console.WriteLine($"Time taken: {timeSpan.TotalMilliseconds} ms");
+            PrintArrayInt(arrayInt, n);
+
 
         }
-                
+
+
+        static void PrintArrayInt(int[] arrayInt, int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write(arrayInt[i] + " ");
+            }
+        }
+        static double Get_Double(string showString)
+        {
+            double number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = double.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
+        }
+        static double Get_UDouble(string showString)
+        {
+            double number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = double.TryParse(Console.ReadLine(), out number);
+                if (!isNumber || number < 0)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber || number < 0);
+            return number;
+        }
+        static int Get_Int(string showString)
+        {
+            int number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = int.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
+        }
+        static uint Get_UInt(string showString)
+        {
+            uint number;
+            bool isNumber;
+            Console.Write(showString);
+            do
+            {
+                isNumber = uint.TryParse(Console.ReadLine(), out number);
+                if (!isNumber)
+                {
+                    Console.Write("Invalid input. Please enter a number again. " + showString);
+                }
+            } while (!isNumber);
+            return number;
+        }
     }
-
-
 }
+
