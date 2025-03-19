@@ -1,33 +1,73 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace ListExample
 {
     public class Test
     {
-        //List
-        public static void Main(string[] args)
+        public class Product 
         {
-            List<int> dsInt = new List<int>();
-            dsInt.AddRange(new int[] { 0, 3, 4, 5, 6, 7, 8, 9, 10, 3, 9, 6, 8 });
-            foreach (var item in dsInt)
-            {
-                Console.Write(item + " ");
-            }
-
-            var kq = dsInt.FindAll( x => x % 3 ==  0 );
-            
-            Console.WriteLine();
-
-            foreach (var item in kq)
-            {
-                Console.Write(item + " ");
-            }
-            
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public double Price { get; set; }
+            public string Origin { get; set; }
 
         }
 
+        //List
+        public static void Main(string[] args)
+        {
+           
+            //SortedList<string , Product> myProducts = new SortedList<string, Product>();
+            //myProducts["sp1"] = new Product() { Id = 1, Name = "Iphone", Origin = "USA", Price = 1500 };
+            //myProducts["sp2"] = new Product() { Id = 2, Name = "Galaxy", Origin = "Korea", Price = 1400 };
+            //myProducts.Add("sp3", new Product() { Id = 3, Name = "Oppo", Origin = "China", Price = 1000 });
 
+            //foreach (var item in myProducts)
+            //{
+            //    Console.Write(item.Key + " " + item.Value.Name);
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine("---------");
+
+            //myProducts.Remove("sp1");
+            //foreach (var item in myProducts)
+            //{
+            //    Console.Write(item.Key + " " + item.Value.Name);
+            //    Console.WriteLine();
+            //}
+
+
+            List <Product> myProducts2 = new List<Product>();
+            //myProducts2 = new Product() { Id = 1, Name = "XPhone", Origin = "TA", Price = 10500 };
+            //myProducts2[1] = new Product() { Id = 1, Name = "Iphone", Origin = "USA", Price = 1500 };
+            //myProducts2[2] = new Product() { Id = 2, Name = "Galaxy", Origin = "Korea", Price = 1400 };
+            //myProducts2[3] = new Product() { Id = 3, Name = "Oppo", Origin = "China", Price = 1000 };
+
+            myProducts2 = new List<Product>() {
+                new Product() { Id = 1, Name = "XPhone", Origin = "TA", Price = 10500 },
+                new Product() { Id = 1, Name = "Iphone", Origin = "USA", Price = 1500 },
+                new Product() { Id = 2, Name = "Galaxy", Origin = "Korea", Price = 1400 },
+                new Product() { Id = 3, Name = "Oppo", Origin = "China", Price = 1000 },
+                };
+
+            myProducts2.Add(new Product() { Id = 1, Name = "Iphonexxxx", Origin = "USAxxxxx", Price = 1500 });
+
+
+            foreach (var item in myProducts2)
+            {
+                Console.Write(item.Name + " " + item.Origin + " " + item.Price);
+                Console.WriteLine();
+            }
+            Console.WriteLine("---------");
+
+
+
+        }
 
         static void PrintArrayDouble2(double[,] arrayDouble, int startRow, int endRow, int startCol, int endCol)
         {
