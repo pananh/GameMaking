@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 
 namespace ListExample
@@ -56,6 +58,10 @@ namespace ListExample
                 };
 
             myProducts2.Add(new Product() { Id = 1, Name = "Iphonexxxx", Origin = "USAxxxxx", Price = 1500 });
+            myProducts2.AddRange(myProducts2);
+            myProducts2.Insert(1 , new Product() { Id = 1, Name = "YPhone", Origin = "TAA", Price = 10500 });
+            myProducts2.Remove(new Product { Id = 1, Name = "Iphone", Origin = "USA", Price = 1500});
+            myProducts2.RemoveAt(0);
 
 
             foreach (var item in myProducts2)
