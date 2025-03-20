@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Practicing in Array, List, Dictionary
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ListExample
 {
     public class Test
     {
-           
+
         public class Mobile
         {
             public string Color { get; set; }
@@ -27,7 +28,7 @@ namespace ListExample
         public static void Main(string[] args)
         {
             Random randomVar = new Random();
-            int n = 6;
+            int n = 7;
 
             string[] Color = new string[] { "Red", "Green", "Yellow", "Blue", "Black", "White" };
             string[] Country = new string[] { "Vietnam", "USA", "Japan", "Korean", "China", "EU" };
@@ -47,42 +48,16 @@ namespace ListExample
                 };
             }
 
-            PrintArray("Name Color Price Origin - Array Mobile Origin", arrayMobile);
+            //PrintArray("Name Color Price Origin - Array Mobile", arrayMobile);
 
             // list
-            List <Mobile> listMobile = new List<Mobile>();
+            List<Mobile> listMobile = new List<Mobile>();
             for (int i = 0; i < n; i++)
             {
                 listMobile.Add(arrayMobile[i]);
 
             }
             //PrintList("Name Color Price Origin - List Mobile", listMobile);
-
-            // Queue 
-            Queue <Mobile> queueMobile = new Queue<Mobile>();
-            for (int i = 0; i < n; i++)
-            {
-                queueMobile.Enqueue(arrayMobile[i]);
-            }
-            var hoso = queueMobile.Dequeue();
-            hoso = queueMobile.Dequeue();
-            PrintQueue("Name Color Price Origin - Queue Mobile after taken 2",queueMobile);
-
-            //Stack
-            Stack <Mobile> stackMobile = new Stack<Mobile>();
-            for (int i = 0; i < n; i++)
-            { 
-                stackMobile.Push(arrayMobile[i]);
-            }
-            hoso = stackMobile.Pop();
-            hoso = stackMobile.Pop();
-            PrintStack("Name Color Price Origin - Stack Mobile after taken 2", stackMobile);
-
-
-            //Linked List
-
-
-
 
             //change
             for (int i = 0; i < arrayMobile.Length; i++)
@@ -95,55 +70,35 @@ namespace ListExample
                     Origin = Country[randomVar.Next(0, 5)],
                 };
             }
-            PrintArray("Array change",arrayMobile);
+            PrintArray("Array change", arrayMobile);
             PrintList("List check", listMobile);
 
             // find in Array
             Mobile find1 = listMobile[0];
-            var found1 = -1; 
-            for (int i = 0; i < arrayMobile.Length; i++) 
+            var found1 = -1;
+            for (int i = 0; i < arrayMobile.Length; i++)
             {
                 if (arrayMobile[i].Origin == find1.Origin)
-                { 
-                    found1 = i ; break;
+                {
+                    found1 = i; break;
                 }
             }
             Console.WriteLine("Origin: listMobile[0] = arrayMobile[{0}]", found1);
 
-            
+
             // find in List
             Mobile find2 = arrayMobile[0];
             var found2 = listMobile.FindIndex(x => x.Origin == find2.Origin);
-            Console.WriteLine("Origin:  arrayMobile[0] = listMobile[{0}]",found2);
+            Console.WriteLine("Origin:  arrayMobile[0] = listMobile[{0}]", found2);
+
+
 
 
 
 
         }
 
-        static void PrintStack(string x, Stack<Mobile> stackMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in stackMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
-
-        static void PrintQueue(string x, Queue<Mobile> queueMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in queueMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
-
-        static void PrintArray(string x, Mobile[] arrayMobile )
+        static void PrintArray(string x, Mobile[] arrayMobile)
         {
             Console.WriteLine(x);
             int i = 0;
@@ -160,7 +115,7 @@ namespace ListExample
             int i = 0;
             foreach (var item in listMobile)
             {
-                Console.WriteLine(i + ". "+ item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
+                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
                 i++;
             }
         }
