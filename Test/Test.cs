@@ -113,6 +113,17 @@ namespace ListExample
                 }
             }
 
+            foreach ( var  item in dictFinal)
+            {
+                Console.WriteLine("number ---- " + item.Key);
+                foreach (var item2 in item.Value)
+                {
+                    Console.WriteLine ("color. " + item2.Value);
+                    
+                }
+
+            }
+
             FindListHouse(6,Color.Red);
 
 
