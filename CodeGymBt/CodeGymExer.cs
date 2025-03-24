@@ -275,11 +275,45 @@ namespace ListExample
             Console.WriteLine();
         }
 
-      
+        public static void AddToChildDic(Dictionary<Color, List<House>> dictChild, House house)
+        {
+            if (dictChild.ContainsKey(house.ColorOutside))
+            {
+                dictChild[house.ColorOutside].Add(house);
+            }
+            else
+            {
+                dictChild.Add(house.ColorOutside, new List<House> { house });
+            }
+        }
+
+        public static void FindDictionary(Dictionary<int, Dictionary<Color, List<House>>> dictFinal, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- Find by Dictionary: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            if (dictFinal.ContainsKey(findNumberPerson))
+            {
+                if (dictFinal[findNumberPerson].ContainsKey(findColor))
+                {
+                    foreach (var i in dictFinal[findNumberPerson][findColor])
+                    {
+                        Console.Write("{0} ", i.Owner);
+                    }
+                }
+                else
+                {
+                    Console.Write("No house found");
+                }
+            }
+            else
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
 
         public static void Main(string[] args)
         {
-            int nMax = 20;
+            int nMax = 100;
 
         LabelStart:
             //array
@@ -301,52 +335,27 @@ namespace ListExample
             //Dictionary in Dictionary
 
             Dictionary<int, Dictionary<Color, List<House>>> dictFinal = new Dictionary<int, Dictionary<Color, List<House>>>();
-            Dictionary<Color, List<House>> dictChild = new Dictionary<Color, List<House>>();
 
             for (int i = 0; i < nMax; i++)
             {
-                if (dictFinal.ContainsKey(arrHouse[i].NumberPerson))
+                int numberPerson = arrHouse[i].NumberPerson;
+                if (dictFinal.ContainsKey(numberPerson))
                 {
-                   
-                    
-
-
-                    if (dictFinal[arrHouse[i].NumberPerson].ContainsKey(arrHouse[i].ColorOutside))
-                    {
-                        dictFinal[arrHouse[i].NumberPerson][arrHouse[i].ColorOutside].Add(arrHouse[i]);
-                    }
-                    else
-                    {
-                        dictFinal[arrHouse[i].NumberPerson].Add(arrHouse[i].ColorOutside, new List<House> { arrHouse[i] });
-                    }
-
-
+                    AddToChildDic(dictFinal[numberPerson], arrHouse[i]);
                 }
-
                 else
                 {
-                    dictFinal.Add(arrHouse[i].NumberPerson, new Dictionary<Color, List<House>> { { arrHouse[i].ColorOutside, new List<House> { arrHouse[i] } } });
-                }
-
-            }
-            Console.WriteLine("Dictionary ---------------- ");
-
-            foreach ( var i in dictFinal)
-            {
-                foreach (var j in i.Value)
-                {
-                    Console.WriteLine("Number of person: {0} Color: {1}", i.Key, j.Key);
-                    foreach (var k in j.Value)
-                    {
-                        Console.WriteLine("House {0}: {1} {2} {3}", k.Owner, k.Address, k.NumberPerson, k.ColorOutside);
-                    }
+                    Dictionary <Color, List<House>> dictChild = new Dictionary<Color, List<House>>();
+                    AddToChildDic(dictChild, arrHouse[i]);
+                    //dictFinal.Add(numberPerson, dictChild); // cái này là chuẩn nhất
+                    dictFinal[numberPerson] = dictChild;    // Cái này đúng vì khi có Key thì dictFinal[numberPerson] đã được khởi tạo
+                    //AddToChildDic(dictFinal[numberPerson], arrHouse[i]);  Cách này không dùng được vì dictFinal[i] chưa được khởi tạo
                 }
             }
+            FindDictionary(dictFinal, findNumberPerson, findColor);
 
-            Console.WriteLine("Dictionary ---------------- ");
 
             // list
-
             List<House> listHouse = new List<House>();
             for (int i = 0; i < nMax; i++)
             {
@@ -356,11 +365,8 @@ namespace ListExample
             // Tim bang lenh co san
             FindListByAuto(listHouse, findNumberPerson, findColor);
 
-
-
             //sorted List
             SortedList<string, List<House>> sortedListHouse = new SortedList<string, List<House>>();
-
             string key = "";
             for (int i = 0; i < nMax; i++)
             {
@@ -394,12 +400,6 @@ namespace ListExample
             }
             FindLinkedList(linkedListHouse, findNumberPerson, findColor); // Linked List này sẽ giữ nguyên dữ liệu sau khi tìm kiếm
 
-
-
-
-
-
-           
 
 
 
