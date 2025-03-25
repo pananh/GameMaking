@@ -2,7 +2,7 @@
 
 namespace CompareTest
 {
-    
+
     public class Fan
     {
         public const int SLOW = 1;
@@ -25,17 +25,20 @@ namespace CompareTest
         public int Speed
         {
             get { return speed; }
-            set { 
-                if (value < 1) 
-                   { onOff = false;
-                    value = 0; }
-                else 
-                    { 
-                    if (value > 3) 
+            set
+            {
+                if (value < 1)
+                {
+                    onOff = false;
+                    value = 0;
+                }
+                else
+                {
+                    if (value > 3)
                     { value = 3; }
                 }
-                speed = value; 
-                }
+                speed = value;
+            }
         }
 
         public bool OnOff
@@ -103,7 +106,7 @@ namespace CompareTest
 
             Console.WriteLine(fan1.ToString());
             Console.WriteLine(fan2.ToString());
-            
+
             // Test riêng
             fan3.Speed = Fan.SLOW;
             fan3.OnOff = true;
