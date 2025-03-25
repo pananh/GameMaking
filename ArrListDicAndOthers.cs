@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Pipes;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -13,293 +14,453 @@ using System.Xml.Linq;
 
 namespace ListExample
 {
+
+    public enum Color
+    {
+        Green = 0,
+        Red = 1,
+        Purple = 2,
+        Yellow = 3,
+        Blue = 4,
+        White = 5,
+    }
+
+
+
     public class Test
     {
 
-        public class Mobile
+        static Color IntToColor(int i)
         {
-            public string Color { get; set; }
-            public string Name { get; set; }
-            public int Price { get; set; }
-            public string Origin { get; set; }
-
-        }
-
-        public enum Color
-        {
-            Red = 0,
-            Blue = 1,
-            Green = 2,
-            Yellow = 3,
-            White = 4,
-        }
-
-        static Color ReturnColor(int colorIndex)
-        {
-            switch (colorIndex)
+            switch (i)
             {
-                case 0: return Color.Red;
-                case 1: return Color.Green;
-                case 2: return Color.Yellow;
-                case 3: return Color.White;
-                case 4: return Color.White;
-                default: return 0;
+                case 0:
+                    return Color.Green;
+                case 1:
+                    return Color.Red;
+                case 2:
+                    return Color.Purple;
+                case 3:
+                    return Color.Yellow;
+                case 4:
+                    return Color.Blue;
+                default:
+                    return Color.White;
             }
         }
-
-
 
         public class House
         {
+            public string Address;
+            public int NumberPerson;
+            public Color ColorOutside;
+            public string Owner;
 
-            public string name;
-            public int numberPerson;
-            public string addhouse;
-            public Color color;
-
-            public House(string namex, int numberPersonx, string addhousex, Color colorx)
+            public House(string address, int numberPerson, Color colorOutside, string owner)
             {
-                //this.name = namex;
-                //this.number = numberx;
-                //this.addhouse = addhousex;
-                //this.color = colorx;
-                name = namex;
-                numberPerson = numberPersonx;
-                addhouse = addhousex;
-                color = colorx;
+                Address = address;
+                NumberPerson = numberPerson;
+                ColorOutside = colorOutside;
+                Owner = owner;
+                // Hoặc có thể đổi tên biến rồi assign giá trị. VD: Address = addressx;
+                // Hoặc vì Address khác address không viết hoa nên không cần this
+                // Nếu dùng this thì có thể trùng tên. VD: this.Address = Address;
             }
 
         }
 
-        static House RandomHouse()
+        public static House RandomHouse(int o)
         {
-            Random randomVar = new Random();
-            string nameh = "";
-            for (int k = 0; k < 5; k++)
+            Random random = new Random();
+            string address = "";
+            for (int i = 0; i < 10; i++)
             {
-                nameh += Convert.ToChar(randomVar.Next(97, 122));
+                address += Convert.ToChar(random.Next(97, 122));
             }
-            string addh = "";
-            for (int k = 0; k < 10; k++)
-            {
-                addh += Convert.ToChar(randomVar.Next(97, 122));
-            }
-            House returnHouse = new House(nameh, randomVar.Next(1, 10), addh, ReturnColor(randomVar.Next(0, 4)));
-
-            return returnHouse;
+            o++;
+            string owner = "H" + o;
+            return new House(address, random.Next(1, 6), IntToColor(random.Next(0, 5)), owner);
         }
 
-        public static void Main(string[] args)
+        public static House[] NewArrH(int n)
         {
-            Random randomVar = new Random();
-            int n = 15;
-
-            string[] Color = new string[] { "Red", "Green", "Yellow", "Blue", "Black", "White" };
-            string[] Country = new string[] { "Vietnam", "USA", "Japan", "Korean", "China", "EU" };
-
-
-            // array
-
-            Mobile[] arrayMobile = new Mobile[n];
-            for (int i = 0; i < arrayMobile.Length; i++)
+            House[] houses = new House[n];
+            for (int i = 0; i < n; i++)
             {
-                arrayMobile[i] = new Mobile
+                houses[i] = RandomHouse(i);
+            }
+            return houses;
+        }
+
+        public static void FindArray(House[] arrHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- Array: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            bool found = false;
+            foreach (var i in arrHouse)
+            {
+                if (i.NumberPerson == findNumberPerson && i.ColorOutside == findColor)
                 {
-                    Color = Color[randomVar.Next(0, 5)],
-                    Name = "A" + i,
-                    Price = randomVar.Next(0, 1000),
-                    Origin = Country[randomVar.Next(0, 5)],
-                };
+                    Console.Write("{0} ", i.Owner);
+                    found = true;
+                }
             }
-            //PrintArray("Name Color Price Origin - Array Mobile Origin", arrayMobile);
-
-            // list
-            List<Mobile> listMobile = new List<Mobile>();
-            for (int i = 0; i < n; i++)
+            if (!found)
             {
-                listMobile.Add(arrayMobile[i]);
-
+                Console.Write("No house found");
             }
-            //PrintList("Name Color Price Origin - List Mobile", listMobile);
+            Console.WriteLine();
+        }
 
-            // Queue 
-            Queue<Mobile> queueMobile = new Queue<Mobile>();
-            for (int i = 0; i < n; i++)
+        public static void FindList(List<House> listHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- List : All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            bool found = false;
+            foreach (var i in listHouse)
             {
-                queueMobile.Enqueue(arrayMobile[i]);
-            }
-            var hoso = queueMobile.Dequeue();
-            hoso = queueMobile.Dequeue();
-            //PrintQueue("Name Color Price Origin - Queue Mobile after taken 2",queueMobile);
-
-            //Stack
-            Stack<Mobile> stackMobile = new Stack<Mobile>();
-            for (int i = 0; i < n; i++)
-            {
-                stackMobile.Push(arrayMobile[i]);
-            }
-            hoso = stackMobile.Pop();
-            hoso = stackMobile.Pop();
-            //PrintStack("Name Color Price Origin - Stack Mobile after taken 2", stackMobile);
-
-
-            //Linked List
-            LinkedList<Mobile> linkedListMobile = new LinkedList<Mobile>();
-
-            var node0 = linkedListMobile.AddFirst(arrayMobile[0]);
-            var node1 = linkedListMobile.AddLast(arrayMobile[1]);
-            var node2 = linkedListMobile.AddAfter(node0, arrayMobile[2]);
-            LinkedListNode<Mobile> node3 = linkedListMobile.AddLast(arrayMobile[3]);
-            node0.Value = arrayMobile[4];
-            //Console.WriteLine("Node0 test " + node0.Value.Name + " " + node0.Value.Origin + " " + node0.Value.Price);
-            //PrintLinkedList("Name Color Price Origin - Linked Node",linkedListMobile);
-
-            // Dictionary
-            Console.WriteLine("Dictionary");
-
-            List<House> listHouseMyDinh = new List<House>();
-
-            // Tao ngau nhien n = 10 nha
-
-            for (int i = 0; i < n; i++)
-            {
-                listHouseMyDinh.Add(RandomHouse());
-            }
-
-            // In List House My Dinh
-            foreach (var i in listHouseMyDinh)
-            {
-                Console.WriteLine(i.name + " " + i.addhouse + " " + i.numberPerson + " " + i.color);
-            }
-
-            // Dictionary by Color
-            Dictionary<Color, List<House>> dictionaryHouseColor = new Dictionary<Color, List<House>>();
-            // Them vao Dictionary
-            foreach (var i in listHouseMyDinh)
-            {
-                Color colorAdd = i.color;
-                int numberHouse = i.numberPerson;
-                if (dictionaryHouseColor.ContainsKey(colorAdd))
+                if (i.NumberPerson == findNumberPerson && i.ColorOutside == findColor)
                 {
-                    dictionaryHouseColor[colorAdd].Add(i);
+                    Console.Write("{0} ", i.Owner);
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void FindListByAuto(List<House> listHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- ListA: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            // var found = listHouse.Where(x => x.NumberPerson == findNumberPerson && x.ColorOutside == findColor); // Tìm kiếm theo điều kiện
+            List<House> found = listHouse.FindAll(x => x.NumberPerson == findNumberPerson && x.ColorOutside == findColor); // Tìm kiếm theo điều kiện
+
+            if (found.Count() > 0)
+            {
+                foreach (var i in found)
+                {
+                    Console.Write("{0} ", i.Owner);
+                }
+            }
+            else
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void AddIntoSortedList(SortedList<string, List<House>> sortedListHouse, House house)
+        {
+            string key = house.NumberPerson + "" + house.ColorOutside;
+            if (sortedListHouse.ContainsKey(key))
+            {
+                sortedListHouse[key].Add(house); // Add phần tử house vào list cũ có key = key
+            }
+            else
+            {
+                sortedListHouse.Add(key, new List<House> { house }); // Add phần tử house vào list mới {} trong list mới có 1 house
+            }
+        }
+
+        public static void FindSortedList(SortedList<string, List<House>> sortedListHouse, int findNumberPerson, Color findColor)
+        {
+            string key = findNumberPerson + "" + findColor;
+            Console.Write("---SortLi: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            if (sortedListHouse.ContainsKey(key))
+            {
+                foreach (var i in sortedListHouse[key])
+                {
+                    Console.Write("{0} ", i.Owner);
+                }
+            }
+            else
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void FindQueue(Queue<House> queueHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- Queue: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            bool found = false;
+            // Tìm trong queue mà không xóa
+            //foreach (var i in queueHouse)
+            //{
+            //    if (i.NumberPerson == findNumberPerson && i.ColorOutside == findColor)
+            //    {
+            //        Console.Write("{0} ", i.Owner);
+            //        found = true;
+            //    }
+            //}
+
+            // Tìm trong queue mà xóa
+            while (queueHouse.Count > 0)
+            {
+                House house = queueHouse.Dequeue();
+                if (house.NumberPerson == findNumberPerson && house.ColorOutside == findColor)
+                {
+                    Console.Write("{0} ", house.Owner);
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void FindStack(Stack<House> stackHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("--- Stack: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            bool found = false;
+            // Tìm trong stack mà không xóa
+            //foreach (var i in stackHouse)
+            //{
+            //    if (i.NumberPerson == findNumberPerson && i.ColorOutside == findColor)
+            //    {
+            //        Console.Write("{0} ", i.Owner);
+            //        found = true;
+            //    }
+            //}
+            // Tìm trong stack mà xóa
+            while (stackHouse.Count > 0)
+            {
+                House house = stackHouse.Pop();
+                if (house.NumberPerson == findNumberPerson && house.ColorOutside == findColor)
+                {
+                    Console.Write("{0} ", house.Owner);
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void FindLinkedList(LinkedList<House> linkedListHouse, int findNumberPerson, Color findColor)
+        {
+            Console.Write("---Linked: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            bool found = false;
+            //foreach (var i in linkedListHouse)
+            //{
+            //    if (i.NumberPerson == findNumberPerson && i.ColorOutside == findColor)
+            //    {
+            //        Console.Write("{0} ", i.Owner);
+            //        found = true;
+            //    }
+            //}
+
+            // Tìm trong linked list kiểu khác mà không xóa. Tìm ngược lại với Queue
+            LinkedListNode<House> node = linkedListHouse.Last;  // Kiểu của Node, lấy node đầu tiên.
+            while (node != null)
+            {
+                House house = node.Value;
+                if (house.NumberPerson == findNumberPerson && house.ColorOutside == findColor)
+                {
+                    Console.Write("{0} ", house.Owner);
+                    found = true;
+                }
+                node = node.Previous; // Lấy node tiếp theo
+            }
+
+            if (!found)
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
+
+        public static void AddToChildDic(Dictionary<Color, List<House>> dictChild, House house)
+        {
+            if (dictChild.ContainsKey(house.ColorOutside))
+            {
+                dictChild[house.ColorOutside].Add(house);
+            }
+            else
+            {
+                dictChild.Add(house.ColorOutside, new List<House> { house });
+            }
+        }
+
+        public static void FindDictionary(Dictionary<int, Dictionary<Color, List<House>>> dictFinal, int findNumberPerson, Color findColor)
+        {
+            Console.Write("---DictX2: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            if (dictFinal.ContainsKey(findNumberPerson))
+            {
+                if (dictFinal[findNumberPerson].ContainsKey(findColor))
+                {
+                    foreach (var i in dictFinal[findNumberPerson][findColor])
+                    {
+                        Console.Write("{0} ", i.Owner);
+                    }
                 }
                 else
                 {
-                    dictionaryHouseColor.Add(colorAdd, new List<House>());
+                    Console.Write("No house found");
                 }
-
             }
-
-            Console.WriteLine("Dictionary by Color");
-            foreach (var i in dictionaryHouseColor)
+            else
             {
-                Console.WriteLine(i.Key + ": ");
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+        }
 
-                foreach (var j in i.Value)
+        public static HashSet<House> AddHashSetBy(House[] houses, int findNumberPerson)
+        {
+            HashSet<House> hashSetHouse = new HashSet<House>();
+            foreach (var i in houses)
+            {
+                if (i.NumberPerson == findNumberPerson)
                 {
-                    Console.WriteLine(j.name + " " + j.addhouse + " " + j.numberPerson + " " + j.color);
+                    hashSetHouse.Add(i);
                 }
-
             }
+            return hashSetHouse;
+        }
 
-            // Dictionary by number
-
-
-
-            Console.WriteLine("----------");
-
-            //change
-            for (int i = 0; i < arrayMobile.Length; i++)
+        public static HashSet<House> AddHashSetBy(House[] houses, Color findColor)
+        {
+            HashSet<House> hashSetHouse = new HashSet<House>();
+            foreach (var i in houses)
             {
-                arrayMobile[i] = new Mobile
+                if (i.ColorOutside == findColor)
                 {
-                    Color = Color[randomVar.Next(0, 5)],
-                    Name = "A" + i,
-                    Price = randomVar.Next(0, 1000),
-                    Origin = Country[randomVar.Next(0, 5)],
-                };
+                    hashSetHouse.Add(i);
+                }
             }
-            //PrintArray("Array change",arrayMobile);
-            //PrintList("List check", listMobile);
+            return hashSetHouse;
+        }
+
+
+        public static void Main(string[] args)
+        {
+            int nMax = 100;
+
+        LabelStart:
+            //array
+            House[] arrHouse = NewArrH(nMax);
+
+            Console.WriteLine("    Here is {0} random houses", nMax);
+            for (int i = 0; i < nMax; i++)
+            {
+                Console.WriteLine("House {0}: {1} {2} {3}", arrHouse[i].Owner, arrHouse[i].Address, arrHouse[i].NumberPerson, arrHouse[i].ColorOutside);
+            }
+
+            int findNumberPerson = 4;
+            Color findColor = Color.Green;
 
             // find in Array
-            Mobile find1 = listMobile[0];
-            var found1 = -1;
-            for (int i = 0; i < arrayMobile.Length; i++)
+            FindArray(arrHouse, findNumberPerson, findColor);
+
+
+            //Dictionary in Dictionary
+
+            Dictionary<int, Dictionary<Color, List<House>>> dictFinal = new Dictionary<int, Dictionary<Color, List<House>>>();
+
+            for (int i = 0; i < nMax; i++)
             {
-                if (arrayMobile[i].Origin == find1.Origin)
+                int numberPerson = arrHouse[i].NumberPerson;
+                if (dictFinal.ContainsKey(numberPerson))
                 {
-                    found1 = i; break;
+                    AddToChildDic(dictFinal[numberPerson], arrHouse[i]);
+                }
+                else
+                {
+                    Dictionary<Color, List<House>> dictChild = new Dictionary<Color, List<House>>();
+                    AddToChildDic(dictChild, arrHouse[i]);
+                    //dictFinal.Add(numberPerson, dictChild); // cái này là chuẩn nhất
+                    dictFinal[numberPerson] = dictChild;    // Cái này đúng vì khi có Key thì dictFinal[numberPerson] đã được khởi tạo
+                    //AddToChildDic(dictFinal[numberPerson], arrHouse[i]);  Cách này không dùng được vì dictFinal[i] chưa được khởi tạo
                 }
             }
-            //Console.WriteLine("Origin: listMobile[0] = arrayMobile[{0}]", found1);
+            FindDictionary(dictFinal, findNumberPerson, findColor);
 
 
-            // find in List
-            Mobile find2 = arrayMobile[0];
-            var found2 = listMobile.FindIndex(x => x.Origin == find2.Origin);
-            //Console.WriteLine("Origin:  arrayMobile[0] = listMobile[{0}]",found2);
+            // HashSet
+            // Quản lý kiểu phần tử
+            HashSet<House> hashSetHouseByNumber = AddHashSetBy(arrHouse, findNumberPerson);
+            HashSet<House> hashSetHouseByColor = AddHashSetBy(arrHouse, findColor);
 
-
-
-
-        }
-
-
-        static void PrintLinkedList(string x, LinkedList<Mobile> list)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in list)
+            Console.Write("---HashSe: All houses have {0} people and {1}: ", findNumberPerson, findColor);
+            hashSetHouseByColor.IntersectWith(hashSetHouseByNumber);
+            if (hashSetHouseByColor.Count > 0)
             {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
+                foreach (var i in hashSetHouseByColor)
+                {
+                    Console.Write("{0} ", i.Owner);
+                }
             }
+            else
+            {
+                Console.Write("No house found");
+            }
+            Console.WriteLine();
+
+            // list
+            List<House> listHouse = new List<House>();
+            for (int i = 0; i < nMax; i++)
+            {
+                listHouse.Add(arrHouse[i]);     // Add vào list. List này độc lập với Array. Dù thay đổi Arr nhưng List không đổi
+            }
+            FindList(listHouse, findNumberPerson, findColor);
+            // Tim bang lenh co san
+            FindListByAuto(listHouse, findNumberPerson, findColor);
+
+            //sorted List
+            SortedList<string, List<House>> sortedListHouse = new SortedList<string, List<House>>();
+            string key = "";
+            for (int i = 0; i < nMax; i++)
+            {
+                AddIntoSortedList(sortedListHouse, arrHouse[i]);
+            }
+            FindSortedList(sortedListHouse, findNumberPerson, findColor);
+
+
+            //Queue
+            Queue<House> queueHouse = new Queue<House>();
+            for (int i = 0; i < nMax; i++)
+            {
+                queueHouse.Enqueue(arrHouse[i]);
+            }
+            FindQueue(queueHouse, findNumberPerson, findColor); // Queue này sẽ mất dữ liệu sau khi dequeue hết
+
+            //Stack
+            Stack<House> stackHouse = new Stack<House>();
+            for (int i = 0; i < nMax; i++)
+            {
+                stackHouse.Push(arrHouse[i]);
+            }
+            // Stack này sẽ mất dữ liệu sau khi pop hết. Stack sẽ tìm ra kết quả có thứ tự ngược với Queue
+            FindStack(stackHouse, findNumberPerson, findColor);
+
+            //Linked List - Node chứa giá trị và 2 con trỏ trỏ đến Node trước và Node sau
+            LinkedList<House> linkedListHouse = new LinkedList<House>();
+            for (int i = 0; i < nMax; i++)
+            {
+                linkedListHouse.AddLast(arrHouse[i]);
+            }
+            FindLinkedList(linkedListHouse, findNumberPerson, findColor); // Linked List này sẽ giữ nguyên dữ liệu sau khi tìm kiếm
+
+
+
+
+
+            Console.Write("Do you want to continue? (Y/N). ");
+            char c = Get_Char("Enter Y or N: ");
+            if (c == 'Y' || c == 'y')
+            {
+                Console.Clear();
+                goto LabelStart;
+            }
+
         }
 
-        static void PrintStack(string x, Stack<Mobile> stackMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in stackMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
-
-        static void PrintQueue(string x, Queue<Mobile> queueMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in queueMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
-
-        static void PrintArray(string x, Mobile[] arrayMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in arrayMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
-
-        static void PrintList(string x, List<Mobile> listMobile)
-        {
-            Console.WriteLine(x);
-            int i = 0;
-            foreach (var item in listMobile)
-            {
-                Console.WriteLine(i + ". " + item.Name + " " + item.Color + " " + item.Price + " " + item.Origin);
-                i++;
-            }
-        }
 
         static double Get_Double(string showString)
         {
@@ -333,5 +494,21 @@ namespace ListExample
             return number;
         }
 
+        static char Get_Char(string showString)
+        {
+            char c;
+            bool isChar;
+            Console.Write(showString);
+            do
+            {
+                isChar = char.TryParse(Console.ReadLine(), out c);
+                if (!isChar)
+                {
+                    Console.Write("Invalid input. Please enter a character again. " + showString);
+                }
+            } while (!isChar);
+            return c;
+
+        }
     }
 }
