@@ -33,7 +33,7 @@ namespace Example
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = random.Next(1,100);
+                array[i] = random.Next();
             }
 
         }
@@ -137,12 +137,18 @@ namespace Example
             }
         }
 
+        public static void TestOverMemory(int i)
+        {
+            if (i < 19284) { TestOverMemory(i + 1); }   // Number of recursive calls is 19284
+            else { return; }
 
+        }
 
         public static void Main(string[] args)
         {
-          
-            int nMax = 100000;
+            //TestOverMemory(0);
+
+            int nMax = 5000;
             int[] array1 = new int[nMax];
             MakeRandom(array1);
             
@@ -160,12 +166,17 @@ namespace Example
             int[] array4 = new int[nMax];
             Array.Copy(array1, array4, nMax);
 
-            StopWatch TuanAnhWatch = new StopWatch();
-            TuanAnhWatch.Start();
-            SelectionSorting(array1);
-            TuanAnhWatch.Stop();
-            Console.WriteLine("Time elapsed Slection Sort: " + TuanAnhWatch.GetElapsedTime() + "ms");
+            Console.WriteLine("Nmax = " + nMax);
 
+            StopWatch TuanAnhWatch = new StopWatch();
+            if (nMax > 150000) { Console.WriteLine("Nmax > 150000. Selection Sort is too slow. Dont run"); }
+            else
+            {
+                TuanAnhWatch.Start();
+                SelectionSorting(array1);
+                TuanAnhWatch.Stop();
+                Console.WriteLine("Time elapsed Slection Sort: " + TuanAnhWatch.GetElapsedTime() + "ms");
+            }
 
             TuanAnhWatch.Start();
             MergeSorting(array2, 0, nMax - 1);
