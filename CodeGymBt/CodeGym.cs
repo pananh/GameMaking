@@ -13,13 +13,15 @@ namespace SnakeGame
         public char Food { get; set; }
         public char Wall { get; set; }
         public char Empty { get; set; }
-        
+        public char Bound { get; set; }
+
         public Symbol() 
         {
             Snake = 'O';
             Food = '*';
             Wall = '#';
             Empty = ' ';
+            Bound = '.';
         }
 
     };
