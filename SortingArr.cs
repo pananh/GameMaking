@@ -3,7 +3,7 @@ using System.Data;
 
 namespace Example
 {
-   
+
     public class StopWatch
     {
         private DateTime startTime;
@@ -28,19 +28,19 @@ namespace Example
 
     public class Test
     {
-        static void MakeRandom (int[] array)
+        static void MakeRandom(int[] array)
         {
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = random.Next(1,100);
+                array[i] = random.Next(1, 100);
             }
 
         }
 
         static void SelectionSorting(int[] array)
         {
-            for (int i = 0; i < array.Length -1; i++ )
+            for (int i = 0; i < array.Length - 1; i++)
             {
                 int minIndex = i;
                 for (int j = i + 1; j < array.Length; j++)
@@ -67,7 +67,7 @@ namespace Example
             int n2 = end - mid;
             int[] leftArr = new int[n1];
             int[] rightArr = new int[n2];
-            
+
             Array.Copy(array, st, leftArr, 0, n1);
             Array.Copy(array, mid + 1, rightArr, 0, n2);
 
@@ -112,7 +112,7 @@ namespace Example
             }
         }
 
-       static void QuickSort(int[] array, int st, int end)
+        static void QuickSort(int[] array, int st, int end)
         {
             if (st < end)
             {
@@ -141,11 +141,11 @@ namespace Example
 
         public static void Main(string[] args)
         {
-          
+
             int nMax = 100000;
             int[] array1 = new int[nMax];
             MakeRandom(array1);
-            
+
             //Console.WriteLine("Before sorting:");
             //for (int i = 0; i < nMax; i++)
             //{
