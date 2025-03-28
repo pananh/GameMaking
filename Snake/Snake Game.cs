@@ -10,16 +10,16 @@ namespace SnakeGame
     // Symbol to Show: Snake, Food, Wall, Empty, Border
     public class Symbol
     {
-        public char Snake { get; set; }     
+        public char Snake { get; set; }
         public char Food { get; set; }
         public char Wall { get; set; }
         public char Empty { get; set; }
         public char Border { get; set; }
 
-        public Symbol() 
+        public Symbol()
         {
-            Snake = 'O';                Food = 'F';
-            Wall = '#';                 Empty = ' ';
+            Snake = 'O'; Food = 'F';
+            Wall = '#'; Empty = ' ';
             Border = '*';
         }
         public Symbol(char snake, char food, char wall, char empty, char border)
@@ -55,9 +55,11 @@ namespace SnakeGame
     // Position
     public class Pos
     {
-        public int x;           public int y;
-        public int xMin { get; private set; }           public int xMax { get; private set; }
-        public int yMin { get; private set; }           public int yMax { get; private set; }
+        public int x; public int y;
+        public int xMin { get; private set; }
+        public int xMax { get; private set; }
+        public int yMin { get; private set; }
+        public int yMax { get; private set; }
 
         public Pos()
         {
@@ -74,15 +76,15 @@ namespace SnakeGame
         public Pos(int x, int y, int xMin, int xMax, int yMin, int yMax)
         {
             this.x = x; this.y = y;
-            this.xMin = xMin;  this.xMax = xMax; this.yMin = yMin; this.yMax = yMax;
+            this.xMin = xMin; this.xMax = xMax; this.yMin = yMin; this.yMax = yMax;
         }
 
         public void PosSnake(int x, int y)
         {
-            if (x < xMin ) x = xMin;            if (x > xMax) x = xMax;
-            if (y < yMin) y = yMin;             if (y > yMax) y = yMax;
+            if (x < xMin) x = xMin; if (x > xMax) x = xMax;
+            if (y < yMin) y = yMin; if (y > yMax) y = yMax;
 
-            this.x = x;            this.y = y;
+            this.x = x; this.y = y;
         }
 
         public void SetXYMinMax(int xMin, int xMax, int yMin, int yMax)
@@ -93,13 +95,13 @@ namespace SnakeGame
             this.yMax = yMax;
         }
 
-    }    
+    }
 
 
     class Program
     {
         // Create a border
-        static void MakeBorder(List <Pos> border, int xMin, int xMax, int yMin, int yMax)
+        static void MakeBorder(List<Pos> border, int xMin, int xMax, int yMin, int yMax)
         {
             for (int x = xMin; x <= xMax; x++)
             {
@@ -107,7 +109,7 @@ namespace SnakeGame
                 border.Add(new Pos(x, yMax));
             }
 
-            for (int y = yMin+1; y < yMax; y++)
+            for (int y = yMin + 1; y < yMax; y++)
             {
                 border.Add(new Pos(xMin, y));
                 border.Add(new Pos(xMax, y));
@@ -141,7 +143,7 @@ namespace SnakeGame
             }
             foreach (var pos in border)
             {
-                map[pos.x,pos.y].SetBorder();
+                map[pos.x, pos.y].SetBorder();
             }
         }
 
@@ -160,14 +162,14 @@ namespace SnakeGame
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Red;
-            
+
 
 
         }
 
         static void Main(string[] args)
         {
-           
+
             int xMin = 0;
             int sizeX = 100;
             int yMin = 0;
@@ -177,13 +179,13 @@ namespace SnakeGame
             int xMax = xMin + sizeX + 1;
 
             Symbol sym = new Symbol();      // Create default symbol
-            LandStt[,] map = new LandStt[xMax+1, yMax+1];
-            
-            List <Pos> border = new List<Pos>();
+            LandStt[,] map = new LandStt[xMax + 1, yMax + 1];
+
+            List<Pos> border = new List<Pos>();
             MakeBorder(border, xMin, xMax, yMin, yMax);
-            
-            List <Pos> wall = new List<Pos>();
-            MakeWall(wall, xMin+1, xMax-1, yMin+1, yMax+1);
+
+            List<Pos> wall = new List<Pos>();
+            MakeWall(wall, xMin + 1, xMax - 1, yMin + 1, yMax + 1);
 
 
             MakeMap(map, border);

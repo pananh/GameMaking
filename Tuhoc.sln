@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		ArrListDicAndOthers.cs = ArrListDicAndOthers.cs
 		DateShow.cs = DateShow.cs
 		Fan.cs = Fan.cs
+		Ex Abstract ToString.cs = Ex Abstract ToString.cs
+		Ex Polymorphism.cs = Ex Polymorphism.cs
 		FindMaxNumberArray.cs = FindMaxNumberArray.cs
 		FindTotalMainDiagonal.cs = FindTotalMainDiagonal.cs
 		InterestPerMonth.cs = InterestPerMonth.cs
@@ -25,14 +27,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		PrintRecTriangleStar.cs = PrintRecTriangleStar.cs
 		ReadNumber.cs = ReadNumber.cs
 		ShowNumberOfPrime.cs = ShowNumberOfPrime.cs
-		SoSanhA++.cs = SoSanhA++.cs
 		SortingArr.cs = SortingArr.cs
+		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
 		TuoisangNgay.cs = TuoisangNgay.cs
 		TyGia.cs = TyGia.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compare", "Compare\Compare.csproj", "{53BDA6F4-1A90-4250-95B1-7F04ED265986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{DEF9C352-18CC-4361-8D0D-23A9482EF24F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +56,10 @@ Global
 		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BDA6F4-1A90-4250-95B1-7F04ED265986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,115 +3,88 @@
 namespace CompareTest
 {
     
-    public class Fan
+    public class Shape
     {
-        public const int SLOW = 1;
-        public const int MEDIUM = 2;
-        public const int FAST = 3;
+        public int x { get; private set; }
+        public int y { get; private set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
 
-        private int speed;
-        private bool onOff;
-        private double radius;
-        private string color;
-
-        public Fan()
+        // virtual method
+        public virtual void Draw()
         {
-            speed = SLOW;
-            onOff = false;
-            radius = 5;
-            color = "blue";
+            Console.WriteLine("Performing base class drawing:");
         }
 
-        public int Speed
-        {
-            get { return speed; }
-            set { 
-                if (value < 1) 
-                   { onOff = false;
-                    value = 0; }
-                else 
-                    { 
-                    if (value > 3) 
-                    { value = 3; }
-                }
-                speed = value; 
-                }
-        }
+    }
 
-        public bool OnOff
+    public class Circle : Shape
+    {
+        public override void Draw()
         {
-            get { return onOff; }
-            set { onOff = value; }
-        }
-
-        public double Radius
-        {
-            get { return radius; }
-            set { radius = value; }
-        }
-
-        public string Color
-        {
-            get { return color; }
-            set { color = value; }
-        }
-
-        public string ToString()
-        {
-            if (onOff)
-            {
-                return "Speed " + speed + " Color " + color + " Radius " + radius + " Fan is on";
-            }
-            else
-            {
-                return "Color " + color + " Radius " + radius + " Fan is off";
-            }
-        }
-
-        public string FanState
-        {
-            get
-            {
-                if (onOff) { return "Fan is on"; }
-                else { return "Fan is off"; }
-            }
-            set
-            {
-                if (value == "on") { onOff = true; }
-                else { onOff = false; }
-            }
+            // Code to draw a circle
+            Console.WriteLine("Drawing a circle");
+            base.Draw();
         }
     }
+
+    public class Triangle : Shape
+    {
+        public override void Draw() {
+            Console.WriteLine("Drawing a triangle");
+            base.Draw();
+        }
+    }
+
+    public class Rectangle : Shape
+    {
+        public override void Draw() {
+            Console.WriteLine("Drawing a rectagle");
+            base.Draw();
+        }
+    }
+
+    class Animal { }
+    class Dog : Animal { }
+    
+
 
     class Program
     {
+
+        static void PrintTypes(Animal a)
+        {
+            Console.WriteLine("--------" );
+            Console.WriteLine(a.GetType() == typeof(Animal));
+            Console.WriteLine(a is Animal);
+            Console.WriteLine(a.GetType() == typeof (Dog));
+            Console.WriteLine(a is Dog);
+        }
         static void Main(string[] args)
         {
-            Fan fan1 = new Fan();
-            Fan fan2 = new Fan();
-            Fan fan3 = new Fan();
+            //var shape = new List<Shape>() { new Rectangle(), new Triangle(), new Circle() };
 
-            fan1.Speed = Fan.FAST;
-            fan1.OnOff = true;
-            fan1.Radius = 10;
-            fan1.Color = "yellow";
+            //foreach (var item in shape)
+            //{
+            //    item.Draw();
+            //}
 
-            fan2.Speed = Fan.MEDIUM;
-            fan2.OnOff = false;
-            fan2.Radius = 5;
-            fan2.Color = "blue";
+            //shape[1].Draw();
+        
+            Dog dog = new Dog();
+            PrintTypes(dog);
 
-            Console.WriteLine(fan1.ToString());
-            Console.WriteLine(fan2.ToString());
-            
-            // Test riêng
-            fan3.Speed = Fan.SLOW;
-            fan3.OnOff = true;
-            fan3.Speed = -1;
-            fan3.Color = "red";
-            Console.WriteLine(fan3.Speed + " " + fan3.Color + " " + fan3.FanState);
+            Animal animal = new Animal();
+            PrintTypes(animal);
+
+            Animal ani2 = dog;
+            PrintTypes(ani2);
+
+            //Dog dog2 = animal as Dog;         khong dao duoc
+            //Dog dog2 = (Dog)animal;       
+            //PrintTypes((Dog)dog2);
 
         }
-
     }
 }
+   
