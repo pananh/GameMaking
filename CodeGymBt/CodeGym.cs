@@ -9,94 +9,124 @@ using System.Threading.Tasks;
 
 namespace CodeGym
 {
-    public class Circle
+    public class Point2D
     {
-        const double PI = Math.PI;
-        protected double radius;
-        protected string color;
+        protected float x; protected float y;
 
-        public double Radius
+        public Point2D(float x, float y)
         {
-            get { return radius; }
-            set { radius = value; }
+            this.x = x;
+            this.y = y;
         }
 
-        public string Color
+        public Point2D() { }
+
+        public float GetX() { return x; }
+        public float GetY() { return y; }
+        public void SetX(float x) { this.x = x; }
+        public void SetY(float y) { this.y = y; }
+
+        public float X { get { return x; } set { x = value; } }
+        public float Y { get { return y; } set { y = value; } }
+        public void SetXY(float x, float y)
         {
-            get { return color; }
-            set { color = value; }
+            this.x = x; this.y = y;
         }
 
-        public double Area()
+        public float[] GetXY()
         {
-            return radius * radius * PI;
+            return new float[] { x, y };
         }
 
         public override string ToString()
         {
-            return "Here is Circle class";
+            //string temp = string.Empty;
+            string temp = "(x,y) = " + string.Format("({0:F2} ,{1:F2})", this.x, this.y);
+            return temp;
         }
 
     }
-    class Cylinder : Circle
+   
+    public class Point3D: Point2D
     {
-        public double height { get; set; }
+        protected float z;
 
-        public double Volumne()
+        public Point3D(float x, float y, float z)
         {
-            return this.Area() * height;
+            this.x=x; this.y=y; this.z=z;
         }
 
-        public override string ToString()
+        public Point3D() { }
+
+        public float GetZ() { return z; }
+        public void SetZ(float z) { this.z = z; }
+        public float Z { get { return z; } set { z = value; } }
+        
+        public void SetXYZ (float x, float y, float z) {this.x = x; this.y = y; this.z = z; }
+        
+        public float[] GetXYZ() { return new float[] { x,y,z }; }
+
+		public override string ToString()
+		{
+            string temp = "(x,y,z) = " + string.Format("({0:F2}, {1:F2}, {2:F2})",x, y, z);
+            return temp;
+		}
+
+        public void Point2D (Point2D point2D)
         {
+            this.x = point2D.X;
+            this.y = point2D.Y;
+        }
+
+        public Point2D Point2DxyG
+        {
+            //get {  return this; }   // cach nay cung duoc nhung se tra ve kieu Point3D
+            get
             {
-                return "Here is Cylinder class";
+                Point2D temp = new Point2D();
+                temp.X = this.x; temp.Y = this.y;
+                return temp;
             }
-
+            set { this.x = value.X; this.y = value.Y; }
         }
-    }
+
+        public Point2D Point2Dxy()
+        {
+            //return this;  // dung kieu nay thi se tra ve kieu type la Point3D
+            Point2D temp = new Point2D(this.x, this.y);
+            return temp;
+        }
+
+	}
+
 
     class Program
     {
 
         static void Main(string[] args)
         {
-            Circle c = new Circle();
-            c.Radius = 10;
-            c.Color = "Green";
-            Console.WriteLine(c.ToString());
-            Console.WriteLine("Radius {0:F2}",c.Radius);
-            Console.WriteLine("Color is " + c.Color);
-			Console.WriteLine("Area is {0:F2}", c.Area());
+            Point2D p2 = new Point2D(2313.235465f, 321654.21316f);
+            Console.WriteLine(p2.ToString());
+            p2.X = 3215.5525f;
+            p2.Y = 19.687f;
+            Console.WriteLine(p2.ToString());
+            Console.WriteLine(p2.GetXY()[0] + " " + p2.GetXY()[1]);
 
+            Point3D p3 = new Point3D();
+            p3.Point2D(p2);
+            p3.Z = 10.10000f;
+            Console.WriteLine(p3.ToString());
 
-            Cylinder cylinder = new Cylinder();
-            cylinder.Radius = c.Radius;
-            cylinder.Color = c.Color;
-            cylinder.height = 20;
+            p3.X = 99.88f;
+            p3.Y = 66.88f;
+            p2 = p3.Point2DxyG;
+            Console.WriteLine(p2.ToString());
 
-
-            Console.WriteLine("------------");
-            c.Radius = 100; c.Color = "Red";        // Test thu doi gia tri, nhung Cylinder khong thay doi
-			Console.WriteLine(c.ToString());
-			Console.WriteLine("Radius {0:F2}", c.Radius);
-			Console.WriteLine("Color is " + c.Color);
-			Console.WriteLine("Area is {0:F2}", c.Area());
-
-            Console.WriteLine("------------");
-			Console.WriteLine(cylinder.ToString());
-            Console.WriteLine("Cylinder radius {0:F2} - height {1:F2}", cylinder.Radius, cylinder.height);
-            Console.WriteLine("Color is " + cylinder.Color);
-            Console.WriteLine("Volumne is {0:F2}",cylinder.Volumne());
-
-            Console.WriteLine("------------");
-            cylinder.Radius = 200;
-            cylinder.Color = "White";
-            cylinder.height = 900;
-			Console.WriteLine(c.ToString());
-			Console.WriteLine("Radius {0:F2}", c.Radius);
-			Console.WriteLine("Color is " + c.Color);
-			Console.WriteLine("Area is {0:F2}", c.Area());
+			p3.X = 88.88f;
+			p3.Y = 77.77f;
+			p2 = p3.Point2Dxy();
+            //Console.WriteLine(p2.GetType());    
+			Console.WriteLine(p2.ToString());
 
 		}
     }
