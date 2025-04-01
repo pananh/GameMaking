@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -52,9 +53,9 @@ namespace CodeGym
 
 		public override string ToString()
 		{
-			return "A Shape with color of "
+			return "A Shape "
 					+ getColor()
-					+ " and "
+					+ " & "
 					+ (isFilled() ? "filled" : "not filled");
 		}
 	}
@@ -112,11 +113,11 @@ namespace CodeGym
 
 		public override string ToString()
 		{
-			return "A Rectangle with width="
+			return "A Rectangle width="
 					+ getWidth()
-					+ " and length="
+					+ " & length="
 					+ getLength()
-					+ ", which is a subclass of "
+					+ ", subclass of "
 					+ base.ToString();
 		}
 
@@ -174,9 +175,9 @@ namespace CodeGym
 
 		public override string ToString()
 		{
-			return "A Circle with radius="
+			return "A Circle R "
 					+ getRadius()
-					+ ", which is a subclass of "
+					+ ", subclass of "
 					+ base.ToString();
 		}
 	}
@@ -228,9 +229,9 @@ namespace CodeGym
 
 		public override string ToString()
 		{
-			return "A Square with side="
+			return "A Square Side="
 					+ getSide()
-					+ ", which is a subclass of "
+					+ ", subclass of "
 					+ base.ToString();
 		}
 	}
@@ -245,46 +246,82 @@ namespace CodeGym
 		{
 
 			// Shape Test
-			Console.WriteLine("Shape Test -------");
-			Shape shape = new Shape();
-			Console.WriteLine(shape);
+			//Console.WriteLine("Shape Test -------");
+			//Shape shape = new Shape();
+			//Console.WriteLine(shape);
 
-			shape = new Shape("red", false);
-			Console.WriteLine(shape);
+			//shape = new Shape("red", false);
+			//Console.WriteLine(shape);
 
 			// Circle Test
+			Random random = new Random();
+			int nMax = 10;
+			double percent = 20;
+
 			Console.WriteLine("Circle -------");
-			Circle circle = new Circle();
-			Console.WriteLine(circle);
+			Circle[] circles = new Circle[nMax];
+			for (int i = 0; i < circles.Length; i++)
+			{
+				circles[i] = new Circle(random.Next(1, 10));
+				Console.WriteLine("{0}. " + circles[i] + " S = {1:F2}", i + 1, circles[i].getArea());
+			}
+			Console.WriteLine("After resize {0}%", percent);
+			for (int i = 0; i < circles.Length; i++)
+			{
+				circles[i].Resize(percent);
+				Console.WriteLine("{0}. " + circles[i] + " S = {1:F2}", i + 1, circles[i].getArea());
+			}
 
-			circle = new Circle(10);
-			Console.WriteLine(circle);
 
-			circle = new Circle(100, "indigo", false);
-			circle.Resize(20);
-			Console.WriteLine(circle);
+			//Circle circle = new Circle();
+			//Console.WriteLine(circle);
+
+			//circle = new Circle(10);
+			//Console.WriteLine(circle);
+
+			//circle = new Circle(100, "indigo", false);
+			//circle.Resize(20);
+			//Console.WriteLine(circle);
 
 			// Rectangle
-			Console.WriteLine("Rectangle -----");
-			Rectangle rectangle = new Rectangle();
-			Console.WriteLine(rectangle);
+			Console.WriteLine("Rectangle -------");
+			Rectangle[] rec = new Rectangle[nMax];
+			for (int i = 0; i < rec.Length; i++)
+			{
+				rec[i] = new Rectangle(random.Next(1, 10), random.Next(1, 10));
+				Console.WriteLine("{0}. " + rec[i] + " S = {1:F2}", i + 1, rec[i].getArea());
+			}
+			Console.WriteLine("After resize {0}%", percent);
+			for (int i = 0; i < rec.Length; i++)
+			{
+				rec[i].Resize(percent);
+				Console.WriteLine("{0}. " + rec[i] + " S = {1:F2}", i + 1, rec[i].getArea());
+			}
 
-			rectangle = new Rectangle(100, 10);
-			rectangle.Resize(20);
-			Console.WriteLine(rectangle);
 
 
 			// Square Test
 			Console.WriteLine("Square -------");
-			Square square = new Square();
-			Console.WriteLine(square);
+			Square[] sq = new Square[nMax];
+			for (int i = 0; i < sq.Length; i++)
+			{
+				sq[i] = new Square(random.Next(1, 10));
+				Console.WriteLine("{0}. " + sq[i] + " S = {1:F2}", i + 1, sq[i].getArea());
+			}
+			Console.WriteLine("After resize {0}%", percent);
+			for (int i = 0; i < sq.Length; i++)
+			{
+				sq[i].Resize(percent);
+				Console.WriteLine("{0}. " + sq[i] + " S = {1:F2}", i + 1, sq[i].getArea());
+			}
 
-			square = new Square(10);
-			square.Resize(20);
-			Console.WriteLine(square);
 
-			square = new Square(100, "yellow", true);
-			Console.WriteLine(square);
+			//square = new Square(10);
+			//square.Resize(20);
+			//Console.WriteLine(square);
+
+			//square = new Square(100, "yellow", true);
+			//Console.WriteLine(square);
 
 
 
