@@ -63,7 +63,7 @@ namespace CodeGym
 	{
 		private double width = 1.0;
 		private double length = 1.0;
-		
+
 		public Rectangle()
 		{
 		}
@@ -188,9 +188,9 @@ namespace CodeGym
 
 	public class Square : Rectangle, Resizeable
 	{
-	
 
-		public void Resize (double  percent)
+
+		public void Resize(double percent)
 		{
 			// Cach 1: Su dung ham lay Width, Length va gan lai
 			//double thisWidth = base.getWidth();
@@ -250,12 +250,12 @@ namespace CodeGym
 
 
 	class Program
-    {
+	{
 
-        static void Main(string[] args)
-        {
+		static void Main(string[] args)
+		{
 
-		
+
 
 			// Circle Test
 			Random random = new Random();
@@ -291,10 +291,10 @@ namespace CodeGym
 				}
 			}
 
-			
+
 
 		}
-    }
+	}
 
 
 }
