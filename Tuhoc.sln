@@ -14,16 +14,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		Circle Cylinder Class.cs = Circle Cylinder Class.cs
 		DateShow.cs = DateShow.cs
 		Ex Abstract ToString.cs = Ex Abstract ToString.cs
-		Ex Point2D3D.cs = Ex Point2D3D.cs
-		Ex IColor IsA.cs = Ex IColor IsA.cs
 		Ex Animal Fruit Interface.cs = Ex Animal Fruit Interface.cs
+		Ex IColor IsA.cs = Ex IColor IsA.cs
+		Ex Point2D3D.cs = Ex Point2D3D.cs
 		Ex Polymorphism.cs = Ex Polymorphism.cs
 		Ex Shape Interface.cs = Ex Shape Interface.cs
 		Fan.cs = Fan.cs
 		FindMaxNumberArray.cs = FindMaxNumberArray.cs
 		FindTotalMainDiagonal.cs = FindTotalMainDiagonal.cs
-		InterestPerMonth.cs = InterestPerMonth.cs
 		IComparer - rable.cs = IComparer - rable.cs
+		InterestPerMonth.cs = InterestPerMonth.cs
 		LargestCommonDivisor.cs = LargestCommonDivisor.cs
 		LoiChao.cs = LoiChao.cs
 		MinerShow.cs = MinerShow.cs
@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
 		TuoisangNgay.cs = TuoisangNgay.cs
+		Thread Task.cs = Thread Task.cs
 		TyGia.cs = TyGia.cs
 	EndProjectSection
 EndProject
