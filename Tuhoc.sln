@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		FindMaxNumberArray.cs = FindMaxNumberArray.cs
 		FindTotalMainDiagonal.cs = FindTotalMainDiagonal.cs
 		InterestPerMonth.cs = InterestPerMonth.cs
+		IComparer - rable.cs = IComparer - rable.cs
 		LargestCommonDivisor.cs = LargestCommonDivisor.cs
 		LoiChao.cs = LoiChao.cs
 		MinerShow.cs = MinerShow.cs

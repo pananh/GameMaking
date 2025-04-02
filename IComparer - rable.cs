@@ -245,9 +245,9 @@ namespace CodeGym
 	}
 
 	class Program
-    {
-        static void Main(string[] args)
-        {
+	{
+		static void Main(string[] args)
+		{
 
 			ComperableCircle[] circles = new ComperableCircle[3];
 			circles[0] = new ComperableCircle(3.6);

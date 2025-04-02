@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Example
 {
-	
+
 	public class Test
 	{
 		private static void ThreadOne()
@@ -27,19 +27,19 @@ namespace Example
 			var watch = new System.Diagnostics.Stopwatch();
 			watch.Start();
 
-			//Chay khong dong bo
-			ThreadOne();
-			ThreadTwo();
+			// Chay khong dong bo
+			//ThreadOne();	
+			//ThreadTwo();
 
-			//Dong do nhu sau  bang Thread
-		    Thread thread1 = new Thread(ThreadOne);
-			Thread thread2 = new Thread(ThreadTwo);
-			thread1.Start();
-			thread2.Start();
+			// Dong do nhu sau  bang Thread
+			//Thread thread1 = new Thread(ThreadOne);
+			//Thread thread2 = new Thread(ThreadTwo);
+			//thread1.Start();
+			//thread2.Start();
 
-			//Chan luong tiep tuc cho toi khi cac tien trinh thread1, 2 hoan thanh
-			thread1.Join();
-			thread2.Join();
+			// Chan luong tiep tuc cho toi khi cac tien trinh thread1, 2 hoan thanh
+			//thread1.Join();
+			//thread2.Join();
 
 
 			// Chay dong bo bang Task can tim hieu them
