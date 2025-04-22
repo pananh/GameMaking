@@ -36,14 +36,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA
 		SortingArr.cs = SortingArr.cs
 		SoSanhA++.cs = SoSanhA++.cs
 		SoSanhObjDynVar.cs = SoSanhObjDynVar.cs
-		TuoisangNgay.cs = TuoisangNgay.cs
 		Thread Task.cs = Thread Task.cs
+		TuoisangNgay.cs = TuoisangNgay.cs
 		TyGia.cs = TyGia.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compare", "Compare\Compare.csproj", "{53BDA6F4-1A90-4250-95B1-7F04ED265986}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{DEF9C352-18CC-4361-8D0D-23A9482EF24F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI Code", "AI Code\AI Code.csproj", "{D3FE8AD1-5A85-4597-932C-4289168AE40F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF9C352-18CC-4361-8D0D-23A9482EF24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3FE8AD1-5A85-4597-932C-4289168AE40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3FE8AD1-5A85-4597-932C-4289168AE40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3FE8AD1-5A85-4597-932C-4289168AE40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3FE8AD1-5A85-4597-932C-4289168AE40F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
